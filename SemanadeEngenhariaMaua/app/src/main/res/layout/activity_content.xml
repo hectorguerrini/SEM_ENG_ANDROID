@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_below="@+id/toolbarPrincipal"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentEnd="true"
+    android:id="@+id/scroll">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="semanaeng.studio.com.semanadeengenhariamaua.MainActivity">
+
+    <include
+        android:id="@+id/toolbarPrincipal"
+        layout="@layout/toolbar" />
+    <Button
+        android:text="Curso Diurno"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_size_view"
+        android:id="@+id/button_di"
+        android:layout_marginTop="@dimen/Margin_top_button"
+        android:layout_below="@+id/toolbarPrincipal"
+        android:theme="@style/Botao"
+        />
+    <Button
+        android:text="Curso Noturno"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_size_view"
+        android:id="@+id/button_no"
+        android:layout_marginTop="@dimen/Margin_top_button"
+        android:layout_below="@+id/button_di"
+        android:theme="@style/Botao"
+        />
+    <Button
+        android:text="Palestra"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_size_view"
+        android:id="@+id/button_palestra"
+        android:layout_marginTop="@dimen/Margin_top_button"
+        android:layout_below="@+id/button_no"
+        android:theme="@style/Botao"
+        />
+    <Button
+        android:text="Cronograma"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_size_view"
+        android:id="@+id/button_cronograma"
+        android:layout_marginTop="@dimen/Margin_top_button"
+        android:layout_below="@+id/button_palestra"
+        android:theme="@style/Botao"
+        />
+    <Button
+        android:text="Patrocinadores"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_size_view"
+        android:id="@+id/button_patro"
+        android:layout_marginTop="@dimen/Margin_top_button"
+        android:layout_below="@+id/button_cronograma"
+        android:theme="@style/Botao"
+        />
+    <Button
+        android:text="Sobre"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_size_view"
+        android:id="@+id/button_sobre"
+        android:layout_marginTop="@dimen/Margin_top_button"
+        android:layout_below="@+id/button_patro"
+        android:theme="@style/Botao"
+        />
+
+
+</RelativeLayout>
+</ScrollView>
