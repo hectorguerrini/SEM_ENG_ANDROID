@@ -1,50 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.v7.widget.Toolbar
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="150dp"
+    android:background="@color/colorPrimary"
+    android:id="@+id/toolbar"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:theme="@style/AppTheme"
+    />
 
-
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:background="@color/colorPrimary"
-        android:id="@+id/toolbarPrincipal"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <android.support.v7.widget.AppCompatImageView
-        app:srcCompat="@drawable/logosemana3"
-        android:layout_width="130dp"
-        android:layout_height="120dp"
-
-        android:id="@+id/imageView"
-        android:layout_marginLeft="60dp"
-        android:layout_marginStart="60dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true">
-
-
-    </android.support.v7.widget.AppCompatImageView>
-
-    <TextView
-        android:text="SEMANA DE ENGENHARIA MAUÁ"
-        android:textAlignment="center"
-        android:textSize="26dp"
-        android:textColor="@android:color/white"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:id="@+id/text_semana"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="23dp"
-        android:layout_marginEnd="23dp"
-         />
-
-</RelativeLayout>
 

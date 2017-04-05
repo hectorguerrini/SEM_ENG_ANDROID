@@ -24,7 +24,7 @@
         <activity
             android:name=".barra_de_navegacao"
             android:label="@string/title_activity_barra_de_navegacao"
-            android:theme="@style/AppTheme"></activity>
+            ></activity>
     </application>
 
 </manifest>

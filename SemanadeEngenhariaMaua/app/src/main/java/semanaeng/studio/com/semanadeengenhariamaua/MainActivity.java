@@ -2,12 +2,17 @@ package semanaeng.studio.com.semanadeengenhariamaua;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+@SuppressWarnings("ALL")
 public class MainActivity extends AppCompatActivity {
 
     private Button diurno;
@@ -16,11 +21,16 @@ public class MainActivity extends AppCompatActivity {
     private Button cronograma;
     private Button patrocinadores;
     private Button sobre;
+    private DrawerLayout nDrawer;
+    private ActionBarDrawerToggle nActionBarDrawerToggle;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_barra_de_navegacao);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbarPrincipal);
 
 
 
@@ -30,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         cronograma = (Button) findViewById(R.id.button_cronograma);
         patrocinadores = (Button) findViewById(R.id.button_patro);
         sobre = (Button) findViewById(R.id.button_sobre);
-
         TextView titulo = (TextView) findViewById(R.id.text_semana);
+        nDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
@@ -43,6 +53,15 @@ public class MainActivity extends AppCompatActivity {
         cronograma.setTypeface( font2 );
         patrocinadores.setTypeface( font2 );
         sobre.setTypeface( font2 );
+
+        nActionBarDrawerToggle = new ActionBarDrawerToggle(this, nDrawer,toolbar, R.string.open,R.string.close);
+
+        nDrawer.setDrawerListener(nActionBarDrawerToggle);
+        nActionBarDrawerToggle.syncState();
+
+
+
+
 
         diurno.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,5 +100,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, sobre.class));
             }
         });
+
+
+
     }
 }
