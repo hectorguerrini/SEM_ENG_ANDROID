@@ -13,10 +13,12 @@
         <item name="colorButtonNormal">@color/colorButton</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="colorControlHighlight">@color/colorPrimary</item>
+
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="barraLateral" parent="Theme.AppCompat.Light">
+        <item name="android:textSize">16sp</item>
 
-
+    </style>
 
 </resources>

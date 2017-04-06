@@ -5,7 +5,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Botao"
+
     >
 
     <include
@@ -15,9 +15,12 @@
 
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/activity_barra_de_navegacao_drawer"/>
+        app:headerLayout="@layout/nav_header_barra_de_navegacao"
+        app:menu="@menu/activity_barra_de_navegacao_drawer"
+        android:theme="@style/barraLateral"
+        />
 
 </android.support.v4.widget.DrawerLayout>
