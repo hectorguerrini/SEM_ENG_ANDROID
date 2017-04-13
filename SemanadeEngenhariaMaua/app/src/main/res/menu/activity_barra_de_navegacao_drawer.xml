@@ -15,5 +15,4 @@
             android:icon="@drawable/ic_settings_black_24dp"
             android:id="@+id/nav_option"
             android:title="Opções" />
-
 </menu>

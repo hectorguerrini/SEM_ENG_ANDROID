@@ -23,8 +23,8 @@
         <activity android:name=".palestra" />
         <activity
             android:name=".barra_de_navegacao"
-            android:label="@string/title_activity_barra_de_navegacao"
-            ></activity>
+            android:label="@string/title_activity_barra_de_navegacao" />
+        <activity android:name=".mapa"></activity>
     </application>
 
 </manifest>
