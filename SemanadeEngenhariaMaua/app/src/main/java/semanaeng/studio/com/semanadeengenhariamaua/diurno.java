@@ -31,7 +31,7 @@ public class diurno extends AppCompatActivity {
     private ImageButton back;
     private ResultSet rs;
     private String sql;
-    private databaseconect db;
+    
     private String teste = "teste 2";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
