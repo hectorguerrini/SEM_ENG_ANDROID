@@ -26,7 +26,7 @@ public class mapa extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(diurno.this, MainActivity.class));
+                startActivity(new Intent(mapa.this, MainActivity.class));
             }
         });
     }
