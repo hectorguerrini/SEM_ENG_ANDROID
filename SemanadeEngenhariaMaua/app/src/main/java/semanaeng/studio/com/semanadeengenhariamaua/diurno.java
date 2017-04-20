@@ -1,16 +1,23 @@
 package semanaeng.studio.com.semanadeengenhariamaua;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.app.ListActivity;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -25,24 +32,30 @@ import org.json.JSONObject;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
-public class diurno extends AppCompatActivity {
+public class diurno extends AppCompatActivity{
 
     private ImageButton back;
-    private ResultSet rs;
-    private String sql;
-    
-    private String teste = "teste 2";
+    Context context;
+    public ArrayList<String> items = new ArrayList<>();
+    String curso = "";
+    public diurno(){
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diurno);
 
+        ListView lista = (ListView) findViewById(R.id.listaDiurno);
         TextView titulo = (TextView) findViewById(R.id.text_semana);
-        TextView idbd = (TextView) findViewById(R.id.idCursobd);
-        idbd.setText(teste);
+
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
-        titulo.setTypeface( font );
+        titulo.setTypeface(font);
+
+        context = this;
 
         back = (ImageButton) findViewById(R.id.button_back);
 
@@ -52,102 +65,67 @@ public class diurno extends AppCompatActivity {
                 startActivity(new Intent(diurno.this, MainActivity.class));
             }
         });
-        new acessoRest().execute("http://10.10.10.106:8080/WebService/webresources/app/curso/listarrtodos");
-    }
 
-    public static String GET(String url){
-        InputStream inputStream = null;
-        String result = "";
-        String line = "";
-        StringBuilder builder = new StringBuilder();
+
         try {
-            // create HttpClient
-            HttpClient httpclient = new DefaultHttpClient();
-            // make GET request to the given URL
-            HttpResponse httpResponse = httpclient.execute(new HttpGet(url));
-            // receive response as inputStream
-            inputStream = httpResponse.getEntity().getContent();
-            // convert inputstream to string
-            /*if(inputStream != null)
-                result = convertInputStreamToString(inputStream);
-            else
-                result = "Did not work!";
-            */
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            while ((line = reader.readLine()) != null){
-                builder.append(line);
+            String c = new acessoRest().execute().get();
+            Log.i("teste",c);
+            JSONObject jsonObject = new JSONObject(c);
+            curso = jsonObject.getString("codigo") + " ";
 
-            }
-            inputStream.close();
-            } catch (Exception e) {
-            Log.d("InputStream", e.getLocalizedMessage());
+            curso+= jsonObject.getString("empresa") + " ";
 
+            curso+= jsonObject.getString("nome") + " ";
 
+            curso+= jsonObject.getString("sala");
+            items.add(curso);
+            Log.i("teste",items.get(0));
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        } catch (ExecutionException e){
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
         }
-        return builder.toString();
+
+        MyAdapter adapter = new MyAdapter(this,items);
+        lista.setAdapter(adapter);
+
     }
 
 
 
-    private class acessoRest extends AsyncTask<String, Void, String> {
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
+    class MyAdapter extends ArrayAdapter {
+        Context context;
+        int[] images = {
+                R.drawable.logosemana3
+        };
+        ArrayList<String> mytitles;
+
+        public MyAdapter(Context c,ArrayList<String> titles)
+        {
+            super(c,R.layout.view,titles);
+            this.context=c;
+            this.mytitles=titles;
+
         }
 
         @Override
-        protected String doInBackground(String... params) {
-            InputStream inputStream = null;
-            String result = "";
-            String line = "";
-            try {
-                // create HttpClient
-                HttpClient httpclient = new DefaultHttpClient();
-                // make GET request to the given URL
-                HttpResponse httpResponse = httpclient.execute(new HttpGet(params[0]));
-                // receive response as inputStream
-                inputStream = httpResponse.getEntity().getContent();
-                // convert inputstream to string
-            /*if(inputStream != null)
-                result = convertInputStreamToString(inputStream);
-            else
-                result = "Did not work!";
-            */
-                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-                while ((line = reader.readLine()) != null){
-                    result = result + line;
-                    Log.i("teste", result);
-                }
-                inputStream.close();
-            } catch (Exception e) {
-                Log.d("InputStream", e.getLocalizedMessage());
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View row = inflater.inflate(R.layout.view,parent,false);
+            ImageView myImage = (ImageView) row.findViewById(R.id.imagelista);
+            TextView myTitle = (TextView) row.findViewById(R.id.textolista);
 
+            myImage.setImageResource(images[position]);
+            myTitle.setText(mytitles.get(position));
 
-            }
-            return result;
-        }
-
-        @Override
-        protected void onPostExecute(String result) {
-            String curso = "";
-            try {
-                TextView idbd = (TextView) findViewById(R.id.idCursobd);
-                JSONObject jsonObject = new JSONObject(result);
-                curso+= "Nome do Curso: " + jsonObject.getString("nome") + "\n";
-                Log.i("teste",curso);
-                curso+= "Nome da Empresa: " + jsonObject.getString("empresa") + "\n";
-                Log.i("teste",curso);
-                curso+= "Nome do Curso: " + jsonObject.getString("sala") + "\n";
-                Log.i("teste",curso);
-                idbd.setText(curso.toString());
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
+            return row;
         }
     }
+
+
 
 
 }

@@ -1,29 +1,56 @@
 package semanaeng.studio.com.semanadeengenhariamaua;
 
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
-import org.apache.http.client.HttpClient;
-import org.apache.http.impl.client.DefaultHttpClient;
+import android.util.Log;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * Created by hecto on 16/04/2017.
+ * Created by hecto on 19/04/2017.
  */
 
-public class acessoRest extends AsyncTask<String, Void, Void>{
-    final HttpClient httpClient = new DefaultHttpClient();
+public class acessoRest extends AsyncTask<String, Void, String> {
+
+    private ListView listView;
+    private String url = "http://sample-env-4.drxhpt9fid.us-east-1.elasticbeanstalk.com/webresources/app/curso/listarDiurno";
+    Context context;
+    private static ArrayList<String> item = new ArrayList<>();
 
     @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
+    protected String doInBackground(String... params) {
+
+        return GET.GET(url);
     }
 
     @Override
-    protected Void doInBackground(String... params) {
-        return null;
-    }
+    protected void onPostExecute(String s) {
+        //String curso = "";
+        try {
+            /*
+            JSONObject jsonObject = new JSONObject(s);
+            curso = jsonObject.getString("codigo") + " ";
 
-    @Override
-    protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
+            curso+= jsonObject.getString("empresa") + " ";
+
+            curso+= jsonObject.getString("nome") + " ";
+
+            curso+= jsonObject.getString("sala") + " ";
+
+            curso+= jsonObject.getString("periodo");
+            */
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //lista.setAdapter(custom);
     }
 }
