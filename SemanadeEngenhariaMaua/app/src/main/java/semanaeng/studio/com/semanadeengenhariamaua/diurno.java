@@ -1,20 +1,25 @@
 package semanaeng.studio.com.semanadeengenhariamaua;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.ListActivity;
@@ -37,27 +42,25 @@ import java.util.concurrent.ExecutionException;
 
 public class diurno extends AppCompatActivity{
 
-    private ImageButton back;
-    Context context;
+    private Button back;
     public ArrayList<String> items = new ArrayList<>();
-    String curso = "";
-    public diurno(){
+    private ProgressBar mProgress;
+    private int mProgressStatus = 0;
 
-    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diurno);
 
-        ListView lista = (ListView) findViewById(R.id.listaDiurno);
+        mProgress = (ProgressBar) findViewById(R.id.progressBar);
         TextView titulo = (TextView) findViewById(R.id.text_semana);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
         titulo.setTypeface(font);
 
-        context = this;
 
-        back = (ImageButton) findViewById(R.id.button_back);
+        back = (Button) findViewById(R.id.button_back);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,36 +70,40 @@ public class diurno extends AppCompatActivity{
         });
 
 
-        try {
-            String c = new acessoRest().execute().get();
-            Log.i("teste",c);
-            JSONObject jsonObject = new JSONObject(c);
-            curso = jsonObject.getString("codigo") + " ";
 
-            curso+= jsonObject.getString("empresa") + " ";
+        new acessoRest().execute("http://sample-env-4.drxhpt9fid.us-east-1.elasticbeanstalk.com/webresources/app/curso/listarDiurno");
 
-            curso+= jsonObject.getString("nome") + " ";
 
-            curso+= jsonObject.getString("sala");
-            items.add(curso);
-            Log.i("teste",items.get(0));
-        } catch (InterruptedException e){
-            e.printStackTrace();
-        } catch (ExecutionException e){
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
+
+
+    }
+
+    public class acessoRest extends AsyncTask<String, Void, String> {
+
+
+        @Override
+        protected String doInBackground(String... params) {
+            String c = GET.GET(params[0]);
+            String curso = json.json(c);
+            return curso;
         }
 
-        MyAdapter adapter = new MyAdapter(this,items);
-        lista.setAdapter(adapter);
+        @Override
+        protected void onPostExecute(String s) {
+            mProgress.setVisibility(View.VISIBLE);
+            ListView lista = (ListView) findViewById(R.id.listaDiurno);
+            items.add(s);
+
+            MyAdapter adapter = new MyAdapter(diurno.this,items);
+            lista.setAdapter(adapter);
+            mProgress.setVisibility(View.GONE);
+        }
+
 
     }
 
 
-
-
-    class MyAdapter extends ArrayAdapter {
+    public class MyAdapter extends ArrayAdapter {
         Context context;
         int[] images = {
                 R.drawable.logosemana3

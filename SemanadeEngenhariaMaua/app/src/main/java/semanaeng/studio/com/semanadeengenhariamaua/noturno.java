@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class noturno extends AppCompatActivity {
 
-    private ImageButton back;
+    private Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +24,7 @@ public class noturno extends AppCompatActivity {
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
         titulo.setTypeface( font );
 
-        back = (ImageButton) findViewById(R.id.button_back);
+        back = (Button) findViewById(R.id.button_back);
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override

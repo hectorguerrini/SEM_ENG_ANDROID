@@ -68,7 +68,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         diurno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(new Intent(MainActivity.this, diurno.class));
+
             }
         });
         noturno.setOnClickListener(new View.OnClickListener() {
@@ -114,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_notificacao) {
             // Handle the camera action
         } else if (id == R.id.nav_mapa) {
-
+            startActivity(new Intent(MainActivity.this, mapa.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

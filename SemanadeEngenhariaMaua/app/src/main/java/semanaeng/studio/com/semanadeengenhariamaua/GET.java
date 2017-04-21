@@ -37,7 +37,6 @@ public class GET {
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             while ((line = reader.readLine()) != null){
                 result = result + line;
-                Log.i("teste", result);
             }
             inputStream.close();
         } catch (Exception e) {

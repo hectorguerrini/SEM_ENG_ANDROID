@@ -4,6 +4,7 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
+
     <ImageView
 
         android:layout_height="50dp"
@@ -17,5 +18,7 @@
         android:id="@+id/textolista"
         android:textSize="16sp"
         android:textColor="@android:color/black"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:fontFamily="sans-serif"
+        android:paddingTop="17dp" />
 </LinearLayout>
