@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="semanaeng.studio.com.semanadeengenhariamaua">
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"
-        />
-    <uses-permission android:name="android.permission.INTERNET"
-        />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"
-        />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"
-        />
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logosemana3"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".diurno" />
-        <activity android:name=".noturno" />
-        <activity android:name=".cronograma" />
-        <activity android:name=".patrocinadores" />
-        <activity android:name=".sobre" />
-        <activity android:name=".palestra" />
-        <activity
-            android:name=".barra_de_navegacao"
-            android:label="@string/title_activity_barra_de_navegacao" />
-        <activity android:name=".mapa"></activity>
+        <activity android:name=".activity.diurno" />
+        <activity android:name=".activity.noturno" />
+        <activity android:name=".activity.cronograma" />
+        <activity android:name=".activity.patrocinadores" />
+        <activity android:name=".sidebar.sobre" />
+        <activity android:name=".activity.palestra" />
+        <activity android:name=".sidebar.mapa" />
+        <activity android:name=".sidebar.recrutamento" />
+        <activity android:name=".activity.login" />
+        <activity android:name=".activity.detalhes" />
+        <activity android:name=".sidebar.tema" />
+        <activity android:name=".sidebar.contato" />
+        <activity android:name=".sidebar.ranking"></activity>
     </application>
 
 </manifest>

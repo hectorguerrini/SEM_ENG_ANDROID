@@ -4,7 +4,7 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="semanaeng.studio.com.semanadeengenhariamaua.MainActivity">
+    tools:context="semanaeng.studio.com.semanadeengenhariamaua.activity.MainActivity">
     <include
         android:id="@+id/toolbarPrincipal"
         layout="@layout/toolbar"
@@ -58,15 +58,7 @@
         android:layout_below="@+id/button_cronograma"
         android:theme="@style/Botao"
         />
-    <Button
-        android:text="Sobre"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/button_size_view_big"
-        android:id="@+id/button_sobre"
-        android:layout_marginTop="@dimen/Margin_top_button"
-        android:layout_below="@+id/button_patro"
-        android:theme="@style/Botao"
-        />
+
 
 
 </RelativeLayout>

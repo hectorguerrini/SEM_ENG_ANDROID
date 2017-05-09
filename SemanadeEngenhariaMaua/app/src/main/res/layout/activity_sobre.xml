@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="semanaeng.studio.com.semanadeengenhariamaua.sobre">
+    tools:context="semanaeng.studio.com.semanadeengenhariamaua.sidebar.sobre">
     <include
         android:id="@+id/toolbarPrincipal"
         layout="@layout/toolbar"
@@ -32,5 +32,133 @@
         android:layout_alignParentStart="true"
         android:layout_height="30dp" />
 
+    <ImageView
+        android:layout_width="60dp"
+        app:srcCompat="@drawable/logosemana3"
+        android:layout_marginTop="10dp"
+        android:id="@+id/image_sobre"
+        android:layout_height="100dp"
+        android:layout_below="@+id/toolbarPrincipal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <ImageView
+        android:layout_width="60dp"
+        app:srcCompat="@drawable/logosemana3"
+        android:layout_marginTop="10dp"
+        android:id="@+id/image_sobre2"
+        android:layout_height="100dp"
+        android:layout_below="@+id/image_sobre"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <ImageView
+        android:layout_width="60dp"
+        app:srcCompat="@drawable/logosemana3"
+        android:layout_marginTop="10dp"
+        android:id="@+id/image_sobre3"
+        android:layout_height="100dp"
+        android:layout_below="@+id/image_sobre2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <ImageView
+        android:layout_width="60dp"
+        app:srcCompat="@drawable/logosemana3"
+        android:layout_marginTop="10dp"
+        android:id="@+id/image_sobre4"
+        android:layout_height="100dp"
+        android:layout_below="@+id/image_sobre3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:text="Quem Somos?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_Qsomo_sobre"
+
+        android:textStyle="normal|bold"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:layout_alignTop="@+id/image_sobre"
+        android:layout_toRightOf="@+id/image_sobre"
+        android:layout_toEndOf="@+id/image_sobre" />
+
+    <TextView
+        android:text="Aluno do Instituto Mauá de Tecnologia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_qs_d"
+        android:layout_below="@+id/text_Qsomo_sobre"
+        android:layout_toRightOf="@+id/image_sobre"
+        android:layout_toEndOf="@+id/image_sobre"
+        android:textSize="16dp"/>
+
+    <TextView
+        android:text="O que Fazemos?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_Oqf"
+
+        android:textStyle="normal|bold"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:layout_alignTop="@+id/image_sobre2"
+        android:layout_toRightOf="@+id/image_sobre2"
+        android:layout_toEndOf="@+id/image_sobre2" />
+
+    <TextView
+        android:text="Organização anual de um evento que promove adequação ao mercado de trabalho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_oqfd"
+        android:layout_below="@+id/text_Oqf"
+        android:layout_toRightOf="@+id/image_sobre2"
+        android:layout_toEndOf="@+id/image_sobre2"
+        android:textSize="16dp"/>
+    <TextView
+        android:text="Missão"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_missao"
+
+        android:textStyle="normal|bold"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:layout_alignTop="@+id/image_sobre3"
+        android:layout_toRightOf="@+id/image_sobre3"
+        android:layout_toEndOf="@+id/image_sobre3" />
+
+    <TextView
+        android:text="Promover a integração e adaptação de alunos e funcionários do CEUN-IMT ao mercador de trabalho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_missaod"
+        android:layout_below="@+id/text_missao"
+        android:layout_toRightOf="@+id/image_sobre3"
+        android:layout_toEndOf="@+id/image_sobre3"
+        android:textSize="16dp"/>
+    <TextView
+        android:text="Objetivo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_objetivo"
+        android:textStyle="normal|bold"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        android:layout_alignTop="@+id/image_sobre4"
+        android:layout_toRightOf="@+id/image_sobre4"
+        android:layout_toEndOf="@+id/image_sobre4" />
+
+    <TextView
+        android:text="Agregar conhecimento e expandir os horizontes de trabalho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_objetivod"
+        android:layout_below="@+id/text_objetivo"
+        android:layout_toRightOf="@+id/image_sobre4"
+        android:layout_toEndOf="@+id/image_sobre4"
+        android:textSize="16dp"/>
 
 </RelativeLayout>

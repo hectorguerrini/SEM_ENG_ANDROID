@@ -5,7 +5,8 @@
     android:id="@+id/activity_mapa"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="semanaeng.studio.com.semanadeengenhariamaua.mapa">
+    tools:context="semanaeng.studio.com.semanadeengenhariamaua.sidebar.mapa"
+    android:background="@color/colorMap">
     <include
         android:id="@id/toolbarPrincipal"
         layout="@layout/toolbar"/>

@@ -1,23 +1,23 @@
-package semanaeng.studio.com.semanadeengenhariamaua;
+package semanaeng.studio.com.semanadeengenhariamaua.sidebar;
 
-import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class palestra extends AppCompatActivity {
+import semanaeng.studio.com.semanadeengenhariamaua.R;
+import semanaeng.studio.com.semanadeengenhariamaua.activity.MainActivity;
 
+public class ranking extends AppCompatActivity {
     private Button back;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_palestra);
-
+        setContentView(R.layout.activity_ranking);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         TextView titulo = (TextView) findViewById(R.id.text_semana);
 
 
@@ -29,7 +29,7 @@ public class palestra extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(palestra.this, MainActivity.class));
+                onBackPressed();
             }
         });
     }

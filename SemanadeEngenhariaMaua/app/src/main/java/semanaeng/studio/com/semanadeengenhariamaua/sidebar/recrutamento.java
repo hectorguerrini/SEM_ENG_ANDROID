@@ -1,0 +1,82 @@
+package semanaeng.studio.com.semanadeengenhariamaua.sidebar;
+
+
+import android.content.pm.ActivityInfo;
+import android.graphics.Typeface;
+import android.os.AsyncTask;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+
+import semanaeng.studio.com.semanadeengenhariamaua.R;
+import semanaeng.studio.com.semanadeengenhariamaua.funcoes.GET;
+import semanaeng.studio.com.semanadeengenhariamaua.funcoes.json;
+
+public class recrutamento extends AppCompatActivity {
+
+    private Button back;
+    private ArrayList<String> recStatus = new ArrayList<>();
+    private ArrayList<String> recData = new ArrayList<>();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_recrutamento);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        TextView titulo = (TextView) findViewById(R.id.text_semana);
+
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
+        titulo.setTypeface( font );
+
+        back = (Button) findViewById(R.id.button_back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+
+        });
+
+
+        new acessDb().execute("http://192.168.0.110:8080/api_restful_java/webresources/app/semanaEng/recrutamento");
+
+
+    }
+
+
+    public class acessDb extends AsyncTask<String, Void,String>{
+        String periodo = "Processo Seletivo de ";
+
+        @Override
+        protected String doInBackground(String... params) {
+            String c = GET.GET(params[0]);
+
+            json j = new json(c);
+            if (c != null) {
+                recStatus = j.jsonRecrutamentoStatus();
+                recData = j.jsonRecrutamentoData();
+            }
+            else {
+                recStatus = null;
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            TextView status = (TextView) findViewById(R.id.text_rec1);
+            TextView data = (TextView) findViewById(R.id.text_recData);
+
+            status.setText(recStatus.get(0));
+            data.setText(periodo+recData.get(1));
+        }
+    }
+
+}

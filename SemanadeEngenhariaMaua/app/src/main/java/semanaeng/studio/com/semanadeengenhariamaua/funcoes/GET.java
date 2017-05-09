@@ -1,4 +1,4 @@
-package semanaeng.studio.com.semanadeengenhariamaua;
+package semanaeng.studio.com.semanadeengenhariamaua.funcoes;
 
 import android.util.Log;
 
@@ -10,6 +10,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 /**
  * Created by hecto on 18/04/2017.
@@ -28,21 +29,16 @@ public class GET {
             HttpResponse httpResponse = httpclient.execute(new HttpGet(url));
             // receive response as inputStream
             inputStream = httpResponse.getEntity().getContent();
-            // convert inputstream to string
-            /*if(inputStream != null)
-                result = convertInputStreamToString(inputStream);
-            else
-                result = "Did not work!";
-            */
+
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             while ((line = reader.readLine()) != null){
                 result = result + line;
+                Log.i("teste", result);
             }
             inputStream.close();
         } catch (Exception e) {
             Log.d("InputStream", e.getLocalizedMessage());
-
-
+            result = null;
         }
         return result;
     }

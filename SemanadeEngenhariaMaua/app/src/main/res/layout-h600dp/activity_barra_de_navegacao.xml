@@ -21,7 +21,11 @@
         app:headerLayout="@layout/nav_header_barra_de_navegacao"
         app:menu="@menu/activity_barra_de_navegacao_drawer"
         android:theme="@style/barraLateral"
-        />
+        >
+        <include layout="@layout/nav_header_barra_de_navegacao"
+            android:id="@+id/nav_header"/>
+    </android.support.design.widget.NavigationView>
+
 
 
 </android.support.v4.widget.DrawerLayout>

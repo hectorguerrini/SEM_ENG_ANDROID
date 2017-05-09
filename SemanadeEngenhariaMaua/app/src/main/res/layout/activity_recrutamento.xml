@@ -1,33 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_diurno"
+    android:id="@+id/activity_recrutamento"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="semanaeng.studio.com.semanadeengenhariamaua.activity.diurno">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="semanaeng.studio.com.semanadeengenhariamaua.sidebar.recrutamento">
     <include
-        android:id="@+id/toolbarPrincipal"
-        layout="@layout/toolbar"
-        />
-
+        android:id="@id/toolbarPrincipal"
+        layout="@layout/toolbar"/>
     <include
-        android:id="@+id/imgbar"
-        layout="@layout/imgbar"
-        />
-
-    <ListView
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:paddingTop="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/toolbarPrincipal"
-        android:layout_alignParentBottom="true"
-        android:id="@+id/listaDiurno"
-        />
-
+        android:id="@id/imgbar"
+        layout="@layout/imgbar"/>
     <ImageView
         android:layout_width="24dp"
         android:layout_height="24dp"
@@ -46,25 +30,34 @@
         android:layout_alignParentStart="true"
         android:layout_height="30dp" />
 
-    <ProgressBar
-        style="?android:attr/progressBarStyle"
+    <TextView
+        android:text="Nosso Processo Seletivo está"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
+        android:layout_marginTop="20dp"
+        android:id="@+id/text_recrutamento"
+        android:textSize="20dp"
         android:layout_below="@+id/toolbarPrincipal"
         android:layout_centerHorizontal="true"
-        android:progress="0"
-        />
+        android:textAlignment="center" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/progressBar"
+        android:layout_below="@+id/text_recrutamento"
         android:layout_centerHorizontal="true"
-        android:id="@+id/text_noconn"
-        android:textSize="18sp"
-        android:textAlignment="center"
-        android:layout_below="@id/toolbarPrincipal"
-        android:textColor="@android:color/darker_gray" />
+        android:id="@+id/text_rec1"
+        android:textSize="20dp"
+        android:textStyle="normal|bold"
+        android:textAlignment="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_rec1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="120dp"
+        android:id="@+id/text_recData"
+        android:textSize="20dp" />
 
 </RelativeLayout>

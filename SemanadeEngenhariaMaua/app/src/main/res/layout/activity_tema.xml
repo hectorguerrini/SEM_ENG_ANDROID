@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_tema"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="semanaeng.studio.com.semanadeengenhariamaua.sidebar.tema">
+    <include
+        android:id="@id/toolbarPrincipal"
+        layout="@layout/toolbar"/>
+    <include
+        android:id="@id/imgbar"
+        layout="@layout/imgbar"/>
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:srcCompat="@drawable/ic_arrow_back_white_24dp"
+        android:id="@+id/imageButtonBack"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/button_back"
+        android:layout_alignEnd="@+id/button_back" />
+
+    <Button
+        android:layout_width="40dp"
+        android:id="@+id/button_back"
+        android:background="@android:color/transparent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:text="TEXTO PUXADO DO BANCO DE DADOS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_tema"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="center"
+        android:textSize="18sp" />
+
+    <TextView
+        android:text="O tema da Semana de Engenharia Mauá é único para cada edição do evento. Ele norteia todo o evento, especialmente os cursos e palestras oferecidos."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_tema2"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:layout_marginBottom="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textAlignment="textStart" />
+</RelativeLayout>

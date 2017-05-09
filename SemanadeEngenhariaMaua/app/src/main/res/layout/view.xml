@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,8 +7,8 @@
 
     <ImageView
 
-        android:layout_height="50dp"
-        android:layout_width="30dp"
+        android:layout_height="80dp"
+        android:layout_width="50dp"
         android:id="@+id/imagelista"
         />
 
@@ -19,6 +19,18 @@
         android:textSize="16sp"
         android:textColor="@android:color/black"
         android:textAlignment="center"
-        android:fontFamily="sans-serif"
-        android:paddingTop="17dp" />
-</LinearLayout>
+        android:layout_toRightOf="@+id/imagelista"
+        android:textStyle="bold"
+        android:paddingTop="15dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/texto2lista"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:textAlignment="center"
+        android:layout_below="@+id/textolista"
+        android:layout_toRightOf="@+id/imagelista"
+        />
+</RelativeLayout>
