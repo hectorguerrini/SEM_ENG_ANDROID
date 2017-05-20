@@ -39,4 +39,5 @@ dependencies {
     compile files('mysql-connector-java-5.1.41-bin.jar')
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     compile files('gson-2.8.0.jar')
+    compile 'com.github.chrisbanes:PhotoView:1.2.6'
 }

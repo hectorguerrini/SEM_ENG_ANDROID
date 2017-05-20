@@ -1,8 +1,10 @@
 package semanaeng.studio.com.semanadeengenhariamaua.sidebar;
 
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ public class recrutamento extends AppCompatActivity {
     private Button back;
     private ArrayList<String> recStatus = new ArrayList<>();
     private ArrayList<String> recData = new ArrayList<>();
+    private Button ps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +47,17 @@ public class recrutamento extends AppCompatActivity {
 
         });
 
+        ps = (Button) findViewById(R.id.button_rec_site);
+        ps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("http://semanamaua.com.br/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
-        new acessDb().execute("http://192.168.0.110:8080/api_restful_java/webresources/app/semanaEng/recrutamento");
+        new acessDb().execute("https://ancient-bastion-16380.herokuapp.com/api.php?table=recrutamento");
 
 
     }

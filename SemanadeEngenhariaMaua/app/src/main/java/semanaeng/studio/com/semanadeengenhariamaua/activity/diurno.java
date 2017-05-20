@@ -41,6 +41,7 @@ public class diurno extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diurno);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mProgress = (ProgressBar) findViewById(R.id.progressBar);
         TextView titulo = (TextView) findViewById(R.id.text_semana);
@@ -61,7 +62,7 @@ public class diurno extends AppCompatActivity{
 
 
 
-        new acessoRest().execute("http://www.mocky.io/v2/58fe8ee11100000f01f5fdb9");
+        new acessoRest().execute("https://ancient-bastion-16380.herokuapp.com/api.php?table=curso&&periodo=diurno");
 
 
 

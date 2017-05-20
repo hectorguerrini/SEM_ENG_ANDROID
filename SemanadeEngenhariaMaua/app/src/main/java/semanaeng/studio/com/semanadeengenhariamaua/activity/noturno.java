@@ -7,9 +7,11 @@ import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,14 +28,18 @@ import semanaeng.studio.com.semanadeengenhariamaua.funcoes.json;
 public class noturno extends AppCompatActivity {
 
     private Button back;
-    public ArrayList<String> items = new ArrayList<>();
+    private ArrayList<String> itemsList = new ArrayList<>();
+    private ArrayList<String> itemsTD = new ArrayList<>();
+    private ArrayList<String> itemsTDD = new ArrayList<>();
+    private ArrayList<String> itemsTE = new ArrayList<>();
     private ProgressBar mProgress;
-
+    private ListView lista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_noturno);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mProgress = (ProgressBar) findViewById(R.id.progressBar);
         TextView titulo = (TextView) findViewById(R.id.text_semana);
@@ -53,7 +59,7 @@ public class noturno extends AppCompatActivity {
         });
 
 
-
+        new acessoRest().execute("https://ancient-bastion-16380.herokuapp.com/api.php?table=curso&&periodo=noturno");
 
     }
     public class acessoRest extends AsyncTask<String, Void, String> {
@@ -62,20 +68,45 @@ public class noturno extends AppCompatActivity {
         @Override
         protected String doInBackground(String... params) {
             String c = GET.GET(params[0]);
-
-
+            json j = new json(c);
+            if (c != null) {
+                itemsList = j.jsonList();
+                itemsTD = j.jsonDetalhesT();
+                itemsTDD = j.jsonDetalhesD();
+                itemsTE = j.jsonEmpresaList();
+            }
+            else {
+                itemsList = null;
+            }
             return null;
         }
 
         @Override
         protected void onPostExecute(String s) {
             mProgress.setVisibility(View.VISIBLE);
-            ListView lista = (ListView) findViewById(R.id.listaDiurno);
+            lista = (ListView) findViewById(R.id.listaNoturno);
+            TextView nc = (TextView) findViewById(R.id.text_noconn);
+            if (itemsList != null){
+                MyAdapter adapter = new MyAdapter(noturno.this,itemsTE,itemsList);
+                lista.setAdapter(adapter);
+                lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(noturno.this,detalhes.class);
+                        intent.putExtra("dadosT",itemsTD.get(position));
+                        intent.putExtra("dadosD",itemsTDD.get(position));
+                        startActivity(intent);
 
+                    }
+                });
 
-            MyAdapter adapter = new MyAdapter(noturno.this,items);
-            lista.setAdapter(adapter);
+            }else{
+                Log.i("teste", "sem conect");
+                nc.setText("Sem Conexao");
+            }
+
             mProgress.setVisibility(View.GONE);
+
         }
 
 
@@ -88,25 +119,26 @@ public class noturno extends AppCompatActivity {
                 R.drawable.logosemana3,
                 R.drawable.logosemana3
         };
-        ArrayList<String> mytitles;
+        ArrayList<String> empresa;
+        ArrayList<String> curso;
 
-        public MyAdapter(Context c, ArrayList<String> titles)
+        public MyAdapter(Context c, ArrayList<String> empresa,ArrayList<String> curso)
         {
-            super(c,R.layout.view,titles);
+            super(c,R.layout.view,empresa);
             this.context=c;
-            this.mytitles=titles;
-
+            this.empresa=empresa;
+            this.curso=curso;
         }
-
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View row = inflater.inflate(R.layout.view,parent,false);
-            ImageView myImage = (ImageView) row.findViewById(R.id.imagelista);
-            TextView myTitle = (TextView) row.findViewById(R.id.textolista);
-
-            myImage.setImageResource(images[0]);
-            myTitle.setText(mytitles.get(position));
+            ImageView Image = (ImageView) row.findViewById(R.id.imagelista);
+            TextView Empresa = (TextView) row.findViewById(R.id.textolista);
+            TextView Curso = (TextView) row.findViewById(R.id.texto2lista);
+            Image.setImageResource(images[0]);
+            Empresa.setText(empresa.get(position));
+            Curso.setText(curso.get(position));
 
             return row;
         }

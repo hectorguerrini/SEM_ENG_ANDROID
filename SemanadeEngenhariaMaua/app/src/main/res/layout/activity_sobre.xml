@@ -34,7 +34,7 @@
 
     <ImageView
         android:layout_width="60dp"
-        app:srcCompat="@drawable/logosemana3"
+        app:srcCompat="@drawable/quemsomosnovo"
         android:layout_marginTop="10dp"
         android:id="@+id/image_sobre"
         android:layout_height="100dp"
@@ -43,7 +43,7 @@
         android:layout_alignParentStart="true" />
     <ImageView
         android:layout_width="60dp"
-        app:srcCompat="@drawable/logosemana3"
+        app:srcCompat="@drawable/oqfazemosnovo"
         android:layout_marginTop="10dp"
         android:id="@+id/image_sobre2"
         android:layout_height="100dp"
@@ -52,7 +52,7 @@
         android:layout_alignParentStart="true" />
     <ImageView
         android:layout_width="60dp"
-        app:srcCompat="@drawable/logosemana3"
+        app:srcCompat="@drawable/missaonovo"
         android:layout_marginTop="10dp"
         android:id="@+id/image_sobre3"
         android:layout_height="100dp"
@@ -61,26 +61,13 @@
         android:layout_alignParentStart="true" />
     <ImageView
         android:layout_width="60dp"
-        app:srcCompat="@drawable/logosemana3"
+        app:srcCompat="@drawable/valoresnovo"
         android:layout_marginTop="10dp"
         android:id="@+id/image_sobre4"
         android:layout_height="100dp"
         android:layout_below="@+id/image_sobre3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-    <TextView
-        android:text="Quem Somos?"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/text_Qsomo_sobre"
-
-        android:textStyle="normal|bold"
-        android:textAlignment="textStart"
-        android:textSize="18sp"
-        android:layout_marginTop="20dp"
-        android:layout_alignTop="@+id/image_sobre"
-        android:layout_toRightOf="@+id/image_sobre"
-        android:layout_toEndOf="@+id/image_sobre" />
 
     <TextView
         android:text="Aluno do Instituto Mauá de Tecnologia"
@@ -90,7 +77,8 @@
         android:layout_below="@+id/text_Qsomo_sobre"
         android:layout_toRightOf="@+id/image_sobre"
         android:layout_toEndOf="@+id/image_sobre"
-        android:textSize="16dp"/>
+        android:textSize="16dp"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:text="O que Fazemos?"
@@ -104,9 +92,11 @@
         android:layout_marginTop="20dp"
         android:layout_alignTop="@+id/image_sobre2"
         android:layout_toRightOf="@+id/image_sobre2"
-        android:layout_toEndOf="@+id/image_sobre2" />
+        android:layout_toEndOf="@+id/image_sobre2"
+        android:layout_marginLeft="20dp" />
 
     <TextView
+        android:layout_marginLeft="20dp"
         android:text="Organização anual de um evento que promove adequação ao mercado de trabalho"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -120,7 +110,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_missao"
-
+        android:layout_marginLeft="20dp"
         android:textStyle="normal|bold"
         android:textAlignment="textStart"
         android:textSize="18sp"
@@ -137,7 +127,8 @@
         android:layout_below="@+id/text_missao"
         android:layout_toRightOf="@+id/image_sobre3"
         android:layout_toEndOf="@+id/image_sobre3"
-        android:textSize="16dp"/>
+        android:textSize="16dp"
+        android:layout_marginLeft="20dp"/>
     <TextView
         android:text="Objetivo"
         android:layout_width="wrap_content"
@@ -149,7 +140,8 @@
         android:layout_marginTop="20dp"
         android:layout_alignTop="@+id/image_sobre4"
         android:layout_toRightOf="@+id/image_sobre4"
-        android:layout_toEndOf="@+id/image_sobre4" />
+        android:layout_toEndOf="@+id/image_sobre4"
+        android:layout_marginLeft="20dp"/>
 
     <TextView
         android:text="Agregar conhecimento e expandir os horizontes de trabalho"
@@ -159,6 +151,22 @@
         android:layout_below="@+id/text_objetivo"
         android:layout_toRightOf="@+id/image_sobre4"
         android:layout_toEndOf="@+id/image_sobre4"
-        android:textSize="16dp"/>
+        android:textSize="16dp"
+        android:layout_marginLeft="20dp"/>
+
+    <TextView
+        android:text="Quem Somos?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_Qsomo_sobre"
+
+        android:textStyle="normal|bold"
+        android:textAlignment="textStart"
+        android:textSize="18sp"
+        android:layout_marginTop="18dp"
+        android:layout_alignTop="@+id/image_sobre"
+        android:layout_toRightOf="@+id/image_sobre"
+        android:layout_toEndOf="@+id/image_sobre"
+        android:layout_marginLeft="20dp" />
 
 </RelativeLayout>

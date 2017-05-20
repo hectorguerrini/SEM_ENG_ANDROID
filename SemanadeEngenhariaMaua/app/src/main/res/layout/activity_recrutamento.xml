@@ -30,26 +30,6 @@
         android:layout_alignParentStart="true"
         android:layout_height="30dp" />
 
-    <TextView
-        android:text="Nosso Processo Seletivo está"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:id="@+id/text_recrutamento"
-        android:textSize="20dp"
-        android:layout_below="@+id/toolbarPrincipal"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_recrutamento"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/text_rec1"
-        android:textSize="20dp"
-        android:textStyle="normal|bold"
-        android:textAlignment="center" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,6 +38,35 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
         android:id="@+id/text_recData"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:textColor="@android:color/black"
+         />
+
+    <Button
+        android:text="Inscrever-se para nossos\nProcesso Seletivo"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="82dp"
+        android:id="@+id/button_rec_site"
+        android:background="@drawable/button_style"
+        android:textColor="@android:color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_rec1"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="39dp"
+        android:layout_below="@+id/toolbarPrincipal"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

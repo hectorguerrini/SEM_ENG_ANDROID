@@ -33,6 +33,17 @@
         android:layout_centerHorizontal="true"
         android:progress="0"
         />
+    <ListView
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/toolbarPrincipal"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/listaNoturno"
+        />
 
     <Button
         android:layout_width="40dp"
@@ -42,4 +53,14 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_height="30dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/text_noconn"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@id/toolbarPrincipal"
+        android:textColor="@android:color/darker_gray" />
 </RelativeLayout>

@@ -7,13 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import semanaeng.studio.com.semanadeengenhariamaua.R;
 import semanaeng.studio.com.semanadeengenhariamaua.activity.MainActivity;
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class mapa extends AppCompatActivity {
     private Button back;
+    private ImageView mapa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +27,10 @@ public class mapa extends AppCompatActivity {
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
         titulo.setTypeface( font );
+
+        mapa = (ImageView) findViewById(R.id.mapamaua);
+        PhotoViewAttacher photoViewAttacher = new PhotoViewAttacher(mapa);
+        photoViewAttacher.update();
 
         back = (Button) findViewById(R.id.button_back);
 

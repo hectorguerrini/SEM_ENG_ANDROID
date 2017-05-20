@@ -31,17 +31,6 @@
         android:layout_height="30dp" />
 
     <TextView
-        android:text="TEXTO PUXADO DO BANCO DE DADOS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/text_tema"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:textAlignment="center"
-        android:textSize="18sp" />
-
-    <TextView
         android:text="O tema da Semana de Engenharia Mauá é único para cada edição do evento. Ele norteia todo o evento, especialmente os cursos e palestras oferecidos."
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -53,5 +42,27 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:textAlignment="textStart" />
+        android:textAlignment="viewStart" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:id="@+id/text_tema"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        android:layout_width="200dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/text_tema2"
+        android:layout_alignEnd="@+id/text_tema2" />
+
+    <ImageView
+        app:srcCompat="@drawable/temanovo"
+        android:id="@+id/imageView2"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
