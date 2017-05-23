@@ -6,11 +6,13 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.preference.PreferenceGroup;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -20,7 +22,7 @@ import semanaeng.studio.com.semanadeengenhariamaua.funcoes.GET;
 import semanaeng.studio.com.semanadeengenhariamaua.funcoes.json;
 
 public class recrutamento extends AppCompatActivity {
-
+    private ProgressBar progressBar ;
     private Button back;
     private ArrayList<String> recStatus = new ArrayList<>();
     private ArrayList<String> recData = new ArrayList<>();
@@ -33,6 +35,7 @@ public class recrutamento extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         TextView titulo = (TextView) findViewById(R.id.text_semana);
 
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
         titulo.setTypeface( font );
@@ -83,11 +86,13 @@ public class recrutamento extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String s) {
+            progressBar.setVisibility(View.VISIBLE);
             TextView status = (TextView) findViewById(R.id.text_rec1);
             TextView data = (TextView) findViewById(R.id.text_recData);
 
             status.setText(recStatus.get(0));
             data.setText(periodo+recData.get(1));
+            progressBar.setVisibility(View.GONE);
         }
     }
 
