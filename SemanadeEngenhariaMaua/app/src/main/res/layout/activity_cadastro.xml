@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_cadastro"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_style"
+    tools:context="semanaeng.studio.com.semanadeengenhariamaua.activity.cadastro">
+
+    <Button
+        android:text="Cadastrar-se"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_cadastro"
+        android:background="@color/colorButton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_marginBottom="38dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logosemana3"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:background="@android:color/white"
+        android:textColor="@android:color/black"
+        android:hint="Nome"
+        android:ems="10"
+        android:textColorHint="@android:color/darker_gray"
+        android:layout_marginTop="22dp"
+        android:id="@+id/editText_nome"
+        android:layout_below="@+id/imageView"
+        android:layout_alignLeft="@+id/editText_email"
+        android:layout_alignStart="@+id/editText_email" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:background="@android:color/white"
+        android:textColor="@android:color/black"
+        android:hint="Senha"
+        android:ems="10"
+        android:textColorHint="@android:color/darker_gray"
+        android:layout_marginTop="20dp"
+        android:id="@+id/editText_pw"
+        android:layout_below="@+id/editText_email"
+        android:layout_alignLeft="@+id/editText_email"
+        android:layout_alignStart="@+id/editText_email" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress"
+        android:background="@android:color/white"
+        android:textColor="@android:color/black"
+        android:hint="Email"
+        android:ems="10"
+        android:textColorHint="@android:color/darker_gray"
+        android:layout_marginTop="20dp"
+        android:id="@+id/editText_email"
+        android:layout_below="@+id/editText_nome"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:background="@android:color/white"
+        android:hint="CPF"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
+        android:ems="10"
+        android:layout_below="@+id/editText_pw"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:id="@+id/editText_cpf" />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:background="@android:color/white"
+        android:hint="RG"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
+        android:ems="10"
+        android:layout_below="@+id/editText_cpf"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:id="@+id/editText_rg" />
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:background="@android:color/white"
+        android:hint="dd/mm/aaaa"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
+        android:ems="10"
+        android:layout_marginTop="16dp"
+        android:id="@+id/editText_data"
+        android:layout_below="@+id/editText_rg"
+        android:layout_alignLeft="@+id/editText_rg"
+        />
+
+    <RadioGroup
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:id="@+id/radio_sexo"
+
+        android:layout_alignBottom="@+id/editText_data"
+        android:orientation="horizontal"
+        android:layout_alignRight="@+id/editText_rg"
+        android:layout_alignEnd="@+id/editText_rg">
+        <RadioButton android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioBut_M"
+            android:text="M"
+            android:checked="false"
+            />
+        <RadioButton android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioBut_F"
+            android:text="F"
+            android:checked="false"/>
+    </RadioGroup>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:background="@android:color/white"
+        android:hint="Telefone-(xx) xxxx-xxxx"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
+        android:ems="10"
+        android:layout_marginTop="16dp"
+        android:id="@+id/editText_tel"
+        android:layout_below="@+id/editText_data"
+        android:layout_centerHorizontal="true"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:background="@android:color/white"
+        android:hint="Celular-(xx) xxxxx-xxxx"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/darker_gray"
+        android:ems="10"
+        android:layout_marginTop="16dp"
+        android:id="@+id/editText_cel"
+        android:layout_below="@id/editText_tel"
+        android:layout_centerHorizontal="true"
+        />
+
+
+</RelativeLayout>
