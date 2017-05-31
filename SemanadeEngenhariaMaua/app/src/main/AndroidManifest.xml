@@ -32,7 +32,8 @@
         <activity android:name=".activity.detalhes" />
         <activity android:name=".sidebar.tema" />
         <activity android:name=".sidebar.contato" />
-        <activity android:name=".sidebar.ranking"></activity>
+        <activity android:name=".sidebar.ranking" />
+        <activity android:name=".activity.cadastro"></activity>
     </application>
 
 </manifest>
