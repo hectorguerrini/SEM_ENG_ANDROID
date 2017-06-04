@@ -9,6 +9,7 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         jackOptions {
             enabled true
@@ -42,9 +43,7 @@ dependencies {
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     compile files('gson-2.8.0.jar')
     compile 'com.github.chrisbanes:PhotoView:1.2.6'
-    compile 'com.google.firebase:firebase-auth:10.2.6'
-    compile 'com.google.firebase:firebase-core:10.2.6'
-
+    compile 'com.google.android.gms:play-services-vision:10.2.6'
 }
 
-apply plugin: 'com.google.gms.google-services'
+
