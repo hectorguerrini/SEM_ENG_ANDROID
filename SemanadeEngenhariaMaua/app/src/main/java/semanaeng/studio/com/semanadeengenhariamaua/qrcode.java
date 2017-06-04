@@ -18,6 +18,8 @@ import com.google.android.gms.vision.barcode.BarcodeDetector;
 
 import java.io.IOException;
 
+import semanaeng.studio.com.semanadeengenhariamaua.funcoes.GET;
+
 
 public class qrcode extends AppCompatActivity {
     SurfaceView cameraView;
@@ -82,6 +84,7 @@ public class qrcode extends AppCompatActivity {
 
                     Intent intent = new Intent();
                     intent.putExtra("barcode",barcodes.valueAt(0).displayValue);
+                    String res = GET.GET(barcodes.valueAt(0).displayValue);
                     setResult(RESULT_OK, intent);
                     finish();
                 }

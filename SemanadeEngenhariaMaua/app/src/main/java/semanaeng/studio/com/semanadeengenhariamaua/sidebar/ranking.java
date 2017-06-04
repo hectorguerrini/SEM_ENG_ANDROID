@@ -71,7 +71,6 @@ public class ranking extends AppCompatActivity {
             if(data != null){
                 String barcode = data.getExtras().getString("barcode");
                 Log.d("ranking",barcode);
-                GET.GET(barcode);
                 test.setText(barcode);
             }
         }
