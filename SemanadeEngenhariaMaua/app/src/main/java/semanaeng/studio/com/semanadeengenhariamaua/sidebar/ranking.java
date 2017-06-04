@@ -8,6 +8,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,7 +17,7 @@ import com.google.android.gms.vision.barcode.Barcode;
 
 
 import semanaeng.studio.com.semanadeengenhariamaua.R;
-import semanaeng.studio.com.semanadeengenhariamaua.activity.MainActivity;
+
 import semanaeng.studio.com.semanadeengenhariamaua.funcoes.GET;
 import semanaeng.studio.com.semanadeengenhariamaua.qrcode;
 
@@ -26,7 +27,7 @@ public class ranking extends AppCompatActivity {
     private Button pontos;
     public static final int REQUEST_CODE = 100;
     public static final int PERMISSION_REQUEST = 200;
-
+    private TextView test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class ranking extends AppCompatActivity {
         setContentView(R.layout.activity_ranking);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         TextView titulo = (TextView) findViewById(R.id.text_semana);
-
+        test = (TextView) findViewById(R.id.testeCode);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
         titulo.setTypeface( font );
@@ -65,11 +66,13 @@ public class ranking extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         if(requestCode == REQUEST_CODE && resultCode == RESULT_OK){
             if(data != null){
-                final Barcode barcode = data.getParcelableExtra("barcode");
-
-                String result = GET.GET(barcode.displayValue);
+                String barcode = data.getExtras().getString("barcode");
+                Log.d("ranking",barcode);
+                GET.GET(barcode);
+                test.setText(barcode);
             }
         }
     }

@@ -5,6 +5,7 @@ import android.content.pm.PackageManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -78,8 +79,9 @@ public class qrcode extends AppCompatActivity {
             public void receiveDetections(Detector.Detections<Barcode> detections) {
                 final SparseArray<Barcode> barcodes =  detections.getDetectedItems();
                 if(barcodes.size() > 0){
+
                     Intent intent = new Intent();
-                    intent.putExtra("barcode", barcodes.valueAt(0).toString());
+                    intent.putExtra("barcode",barcodes.valueAt(0).displayValue);
                     setResult(RESULT_OK, intent);
                     finish();
                 }

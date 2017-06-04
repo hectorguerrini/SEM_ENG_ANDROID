@@ -1,6 +1,6 @@
 package semanaeng.studio.com.semanadeengenhariamaua.sidebar;
 
-import android.content.Intent;
+
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import semanaeng.studio.com.semanadeengenhariamaua.R;
-import semanaeng.studio.com.semanadeengenhariamaua.activity.MainActivity;
+
 import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class mapa extends AppCompatActivity {

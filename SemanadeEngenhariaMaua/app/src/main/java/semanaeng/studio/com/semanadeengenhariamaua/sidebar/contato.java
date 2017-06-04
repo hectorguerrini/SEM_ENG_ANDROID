@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import semanaeng.studio.com.semanadeengenhariamaua.R;
-import semanaeng.studio.com.semanadeengenhariamaua.activity.MainActivity;
+
 
 public class contato extends AppCompatActivity {
     private Button back;

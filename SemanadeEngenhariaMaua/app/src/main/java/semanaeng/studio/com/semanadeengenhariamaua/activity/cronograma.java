@@ -1,6 +1,6 @@
 package semanaeng.studio.com.semanadeengenhariamaua.activity;
 
-import android.content.Intent;
+
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;

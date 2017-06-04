@@ -42,4 +42,16 @@
         android:layout_alignStart="@+id/imageButtonBack"
         android:layout_marginTop="13dp"
         android:id="@+id/button_adcionarP" />
+
+    <TextView
+        android:id="@+id/testeCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button_adcionarP"
+        android:layout_marginLeft="22dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="34dp"
+        android:layout_toEndOf="@+id/button_back"
+        android:layout_toRightOf="@+id/button_back"
+        android:text="TextView" />
 </RelativeLayout>

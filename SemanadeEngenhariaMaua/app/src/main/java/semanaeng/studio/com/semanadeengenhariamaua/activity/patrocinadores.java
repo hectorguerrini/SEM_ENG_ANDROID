@@ -2,7 +2,7 @@ package semanaeng.studio.com.semanadeengenhariamaua.activity;
 
 
 import android.content.Context;
-import android.content.Intent;
+
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
@@ -12,10 +12,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
+
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -23,7 +23,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 import semanaeng.studio.com.semanadeengenhariamaua.R;
 import semanaeng.studio.com.semanadeengenhariamaua.funcoes.GET;
@@ -37,10 +37,6 @@ public class patrocinadores extends AppCompatActivity {
     private ListView lista;
     private ArrayList<patrocinador> p = new ArrayList<>();
     private ArrayList<String> classeA= new ArrayList<>();
-    private ArrayList<String> classeB= new ArrayList<>();
-    private ArrayList<String> classeC= new ArrayList<>();
-    private ArrayList<String> classeD= new ArrayList<>();
-    private ArrayList<String> classeE= new ArrayList<>();
     Gson g = new Gson();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
