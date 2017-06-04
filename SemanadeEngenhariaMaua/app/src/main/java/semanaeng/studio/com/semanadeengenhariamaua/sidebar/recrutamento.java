@@ -91,7 +91,7 @@ public class recrutamento extends AppCompatActivity {
             TextView data = (TextView) findViewById(R.id.text_recData);
 
             status.setText(recStatus.get(0));
-            data.setText(periodo+recData.get(1));
+            data.setText(periodo+recData.get(0));
             progressBar.setVisibility(View.GONE);
         }
     }

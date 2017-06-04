@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import semanaeng.studio.com.semanadeengenhariamaua.R;
+import semanaeng.studio.com.semanadeengenhariamaua.funcoes.SessionManager;
 import semanaeng.studio.com.semanadeengenhariamaua.sidebar.contato;
 import semanaeng.studio.com.semanadeengenhariamaua.sidebar.mapa;
 import semanaeng.studio.com.semanadeengenhariamaua.sidebar.ranking;
@@ -31,10 +32,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Button palestra;
     private Button cronograma;
     private Button patrocinadores;
-    private Button login;
+    private Button logout;
     private DrawerLayout nDrawer;
     private ActionBarDrawerToggle nActionBarDrawerToggle;
     private Toolbar toolbar;
+    private SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         TextView titulo = (TextView) findViewById(R.id.text_semana);
         nDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        login = (Button) findViewById(R.id.button_navbar);
+        logout = (Button) findViewById(R.id.button_navbar);
 
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
         titulo.setTypeface( font );
@@ -65,6 +67,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         cronograma.setTypeface( font2 );
         patrocinadores.setTypeface( font2 );
 
+        session = new SessionManager(getApplicationContext());
+        if (!session.isLoggedIn()) {
+            session.setLogin(false);
+            startActivity(new Intent(MainActivity.this, semanaeng.studio.com.semanadeengenhariamaua.activity.login.class));
+            finish();
+        }
 
         nActionBarDrawerToggle = new ActionBarDrawerToggle(this, nDrawer,toolbar, R.string.open,R.string.close);
 
@@ -103,10 +111,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(MainActivity.this, semanaeng.studio.com.semanadeengenhariamaua.activity.patrocinadores.class));
             }
         });
-        login.setOnClickListener(new View.OnClickListener() {
+        logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                session.setLogin(false);
                 startActivity(new Intent(MainActivity.this, semanaeng.studio.com.semanadeengenhariamaua.activity.login.class));
+                finish();
             }
         });
 

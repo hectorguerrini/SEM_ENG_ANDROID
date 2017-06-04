@@ -40,8 +40,10 @@
         android:layout_height="100dp"
         android:layout_below="@+id/toolbarPrincipal"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:paddingLeft="5dp"/>
     <ImageView
+        android:paddingLeft="5dp"
         android:layout_width="60dp"
         app:srcCompat="@drawable/oqfazemosnovo"
         android:layout_marginTop="10dp"
@@ -51,6 +53,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
     <ImageView
+        android:paddingLeft="5dp"
         android:layout_width="60dp"
         app:srcCompat="@drawable/missaonovo"
         android:layout_marginTop="10dp"
@@ -64,6 +67,7 @@
         app:srcCompat="@drawable/valoresnovo"
         android:layout_marginTop="10dp"
         android:id="@+id/image_sobre4"
+        android:paddingLeft="5dp"
         android:layout_height="100dp"
         android:layout_below="@+id/image_sobre3"
         android:layout_alignParentLeft="true"
