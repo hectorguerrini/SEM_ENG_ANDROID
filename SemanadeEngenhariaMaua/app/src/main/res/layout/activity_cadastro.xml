@@ -8,6 +8,20 @@
     android:background="@drawable/login_style"
     tools:context="semanaeng.studio.com.semanadeengenhariamaua.activity.cadastro">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/editText_nome"
+        android:layout_alignBottom="@+id/editText_nome"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:layout_toEndOf="@+id/editText_nome"
+        android:layout_toRightOf="@+id/editText_nome"
+        android:text="*"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="18dp" />
+
     <Button
         android:text="Cadastrar-se"
         android:layout_width="wrap_content"
@@ -162,6 +176,42 @@
         android:layout_below="@id/editText_tel"
         android:layout_centerHorizontal="true"
         />
+
+    <TextView
+        android:id="@+id/textView_alert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textSize="18dp"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_alignBaseline="@+id/editText_email"
+        android:layout_alignBottom="@+id/editText_email"
+        android:layout_alignLeft="@+id/textView"
+        android:layout_alignStart="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="18dp"
+        android:layout_alignBaseline="@+id/editText_pw"
+        android:layout_alignBottom="@+id/editText_pw"
+        android:layout_alignLeft="@+id/textView_alert"
+        android:layout_alignStart="@+id/textView_alert" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="18dp"
+        android:layout_alignBaseline="@+id/editText_cpf"
+        android:layout_alignBottom="@+id/editText_cpf"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_alignStart="@+id/textView2" />
 
 
 </RelativeLayout>

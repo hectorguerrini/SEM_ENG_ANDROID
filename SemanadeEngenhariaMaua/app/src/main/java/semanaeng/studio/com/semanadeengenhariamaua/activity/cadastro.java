@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 
@@ -43,7 +44,8 @@ public class cadastro extends AppCompatActivity {
     private EditText telEdit;
     private EditText celEdit;
     private String URL_CADASTRO = "https://ancient-bastion-16380.herokuapp.com/cadastro.php";
-
+    private RadioGroup sexo;
+    private String S = "indefinido";
     private static final String TAG = cadastro.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,7 @@ public class cadastro extends AppCompatActivity {
         dataEdit = (EditText) findViewById(R.id.editText_data);
         telEdit = (EditText) findViewById(R.id.editText_tel);
         celEdit = (EditText) findViewById(R.id.editText_cel);
+        sexo = (RadioGroup) findViewById(R.id.radio_sexo);
 
 
         // Progress dialog
@@ -93,6 +96,18 @@ public class cadastro extends AppCompatActivity {
                 String data = dataEdit.getText().toString().trim();
                 String tel = telEdit.getText().toString().trim();
                 String cel = celEdit.getText().toString().trim();
+                switch (sexo.getCheckedRadioButtonId()){
+                    case R.id.radioBut_M:
+                         S = "Masculino";
+                        break;
+                    case R.id.radioBut_F:
+                         S = "Feminino";
+                        break;
+                    default:
+                         S = "Indefinido";
+                        break;
+                }
+
 
                 if (!nome.isEmpty() && !email.isEmpty() && !password.isEmpty()&& !cpf.isEmpty()) {
                     registerUser(nome, email, password,cpf,rg,data,tel,cel);
@@ -172,6 +187,7 @@ public class cadastro extends AppCompatActivity {
                 params.put("data",data);
                 params.put("tel",tel);
                 params.put("cel",cel);
+                params.put("sexo",S);
 
                 return params;
             }

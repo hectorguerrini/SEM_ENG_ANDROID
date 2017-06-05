@@ -31,9 +31,6 @@ public class GET {
             inputStream = httpResponse.getEntity().getContent();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-            if((line = reader.readLine())==null){
-                result="null";
-            }
             while ((line = reader.readLine()) != null){
                 result = result + line;
                 Log.i("teste", result);

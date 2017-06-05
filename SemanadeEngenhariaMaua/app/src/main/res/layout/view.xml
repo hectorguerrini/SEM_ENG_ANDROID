@@ -13,16 +13,15 @@
         />
 
     <TextView
+        android:id="@+id/textolista"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textolista"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
-        android:textAlignment="center"
         android:layout_toRightOf="@+id/imagelista"
-        android:textStyle="bold"
-        android:paddingTop="15dp"
-        />
+        android:paddingTop="5dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
