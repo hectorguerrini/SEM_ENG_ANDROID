@@ -134,7 +134,7 @@ public class patrocinadores extends AppCompatActivity {
             lista = (ListView) findViewById(R.id.listaPatrocinadores);
             TextView nc = (TextView) findViewById(R.id.text_noconn);
             if (classeA!= null){
-                MyAdapter adapter = new MyAdapter(patrocinadores.this,classeA/*,classeB,classeC,classeD,classeE*/);
+                MyAdapter adapter = new MyAdapter(patrocinadores.this,classeA);
                 lista.setAdapter(adapter);
             }else{
                 Log.i("teste", "sem conect");
@@ -150,21 +150,14 @@ public class patrocinadores extends AppCompatActivity {
         Context context;
 
         ArrayList<String> A;
-        ArrayList<String> B;
-        ArrayList<String> C;
-        ArrayList<String> D;
-        ArrayList<String> E;
 
-        public MyAdapter(Context c,ArrayList<String> A/*,ArrayList<String> B,ArrayList<String> C,ArrayList<String> D,ArrayList<String> E*/)
+
+        public MyAdapter(Context c,ArrayList<String> A)
         {
             super(c,R.layout.view,A);
             this.context=c;
 
             this.A=A;
-            /*this.B=B;
-            this.C=C;
-            this.D=D;
-            this.E=E;*/
 
         }
         @Override
@@ -173,17 +166,6 @@ public class patrocinadores extends AppCompatActivity {
             View row = inflater.inflate(R.layout.view_patrocinadores,parent,false);
             TextView nome = (TextView) row.findViewById(R.id.texto_lista_patrocinadores);
             nome.setText(A.get(position));
-                //nome.setText("CLASSE A");
-
-            /*nome.setText("CLASSE B");
-            nome.setText(B.get(position));
-            nome.setText("CLASSE C");
-            nome.setText(C.get(position));
-            nome.setText("CLASSE D");
-            nome.setText(D.get(position));
-            nome.setText("CLASSE E");
-            nome.setText(E.get(position));*/
-
 
             return row;
         }

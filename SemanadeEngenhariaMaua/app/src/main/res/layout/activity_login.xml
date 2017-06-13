@@ -26,14 +26,14 @@
         android:layout_alignLeft="@+id/editText_login_email"
         android:layout_marginTop="30dp"
         android:id="@+id/editText_login_password"
-        android:background="@android:color/white"
+        android:background="@drawable/edittext_style"
         android:textColor="@android:color/black"
         android:hint="Senha"
         android:textColorHint="@android:color/darker_gray"/>
 
     <Button
         android:text="Login"
-        android:background="@color/colorButton"
+        android:background="@drawable/button_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText_login_password"
@@ -50,7 +50,7 @@
         android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/editText_login_email"
-        android:background="@android:color/white"
+        android:background="@drawable/edittext_style"
         android:textColor="@android:color/black"
         android:hint="Email"
         android:layout_marginTop="62dp"
@@ -60,9 +60,10 @@
 
 
         />
+
     <ImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:srcCompat="@drawable/ic_arrow_back_white_24dp"
         android:id="@+id/imageButtonBack"
         android:layout_alignParentTop="true"
@@ -70,21 +71,27 @@
         android:layout_alignEnd="@+id/button_back" />
 
     <Button
-        android:layout_width="40dp"
+        android:layout_width="50dp"
         android:id="@+id/button_back"
         android:background="@android:color/transparent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_height="30dp" />
+        android:layout_height="50dp"
+        />
 
     <Button
-        android:text="cadastro"
+        android:text="Cadastre-se no Aplicativo"
+        android:textSize="10sp"
+        android:textColor="@android:color/white"
+        android:textAllCaps="false"
+        android:textStyle="italic"
+        android:background="@android:color/transparent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button_ir_cadastro"
         android:layout_below="@+id/button_login"
-        android:layout_alignLeft="@+id/button_login"
-        android:layout_alignStart="@+id/button_login"
-        android:layout_marginTop="32dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp" />
+
 </RelativeLayout>

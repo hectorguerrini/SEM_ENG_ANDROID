@@ -2,13 +2,13 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <gradient
-        android:angle="270"
-        android:startColor="#2e8fc2"
-        android:endColor="#006599"/>
+        android:angle="90"
+        android:startColor="@color/colorButton"
+        android:endColor="@color/colorPrimary"/>
 
     <stroke
         android:width="3dp"
-        android:color="#00679e" />
+        android:color="@color/colorButton" />
 
     <corners android:radius="10dp" />
 

@@ -200,6 +200,7 @@ public class cadastro extends AppCompatActivity {
 
     private void showDialog() {
         if (!pDialog.isShowing())
+            pDialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.progressdialog_style));
             pDialog.show();
     }
 

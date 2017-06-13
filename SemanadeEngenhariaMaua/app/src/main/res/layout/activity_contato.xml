@@ -16,8 +16,8 @@
         />
 
     <ImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:srcCompat="@drawable/ic_arrow_back_white_24dp"
         android:id="@+id/imageButtonBack"
         android:layout_alignParentTop="true"
@@ -25,13 +25,13 @@
         android:layout_alignEnd="@+id/button_back" />
 
     <Button
-        android:layout_width="40dp"
+        android:layout_width="50dp"
         android:id="@+id/button_back"
         android:background="@android:color/transparent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_height="30dp" />
+        android:layout_height="50dp" />
 
     <TextView
         android:text="(11) 4239-3169"
@@ -87,8 +87,7 @@
         android:layout_alignStart="@+id/imageButtonBack" />
 
     <TextView
-        android:text="Aplicativo Desenvolvido em Android Por: \nHector Guerrini Herrera\nContato: email - hectorumaga@hotmail.com ; \ntel - (11)96927-8041(Claro)
-\nAplicativo Desenvolvido em IOS Por: Willian Chan\nContato: email - willian_chan_@hotmail.com\n tel - (11)98414-5130 "
+        android:text="Aplicativo Desenvolvido em Android Por: \nHector Guerrini Herrera\nContato: email - hectorumaga@hotmail.com ; \ntel - (11)96927-8041\nAplicativo Desenvolvido em IOS Por: Willian Chan\nContato: email - willian_chan_@hotmail.com\n tel - (11)98414-5130 "
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="17dp"

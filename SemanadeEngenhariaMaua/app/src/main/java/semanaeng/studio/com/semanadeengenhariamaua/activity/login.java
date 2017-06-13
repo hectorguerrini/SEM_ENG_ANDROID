@@ -4,9 +4,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -27,6 +30,7 @@ import java.util.Map;
 import semanaeng.studio.com.semanadeengenhariamaua.R;
 import semanaeng.studio.com.semanadeengenhariamaua.funcoes.AppController;
 import semanaeng.studio.com.semanadeengenhariamaua.funcoes.SessionManager;
+import semanaeng.studio.com.semanadeengenhariamaua.modelo.usuario;
 
 public class login extends AppCompatActivity {
 
@@ -37,6 +41,9 @@ public class login extends AppCompatActivity {
     private Button back;
     private Button cad;
     private Button btLogin;
+    private usuario UsuarioLog = new usuario();
+    private String email;
+    private String password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +60,7 @@ public class login extends AppCompatActivity {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
+
         session = new SessionManager(getApplicationContext());
 
         if (session.isLoggedIn()) {
@@ -61,21 +69,20 @@ public class login extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = inputEmail.getText().toString().trim();
-                String password = inputPassword.getText().toString().trim();
+                email = inputEmail.getText().toString().trim();
+                password = inputPassword.getText().toString().trim();
 
                 // Check for empty data in the form
                 if (!email.isEmpty() && !password.isEmpty()) {
                     // login user
-                    checkLogin(email, password);
+                    checkLogin(email,password);
                 } else {
                     // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext(),
-                            "Please enter the credentials!", Toast.LENGTH_LONG)
+                            "Entre com email e senha validos!", Toast.LENGTH_LONG)
                             .show();
                 }
             }
@@ -98,6 +105,7 @@ public class login extends AppCompatActivity {
 
 
     }
+
     private void checkLogin(final String email, final String password) {
         // Tag used to cancel the request
         String tag_string_req = "req_login";
@@ -119,7 +127,9 @@ public class login extends AppCompatActivity {
                     // Check for error node in json
                     if (!error) {
                         // user successfully logged in
+                        Toast.makeText(getApplicationContext(), "Conectado!!", Toast.LENGTH_LONG).show();
                         // Create login session
+
                         session.setLogin(true);
 
                         // Launch main activity
@@ -169,6 +179,7 @@ public class login extends AppCompatActivity {
 
     private void showDialog() {
         if (!pDialog.isShowing())
+            pDialog.getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.progressdialog_style));
             pDialog.show();
     }
 

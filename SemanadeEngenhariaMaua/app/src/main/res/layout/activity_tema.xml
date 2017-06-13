@@ -13,8 +13,8 @@
         android:id="@id/imgbar"
         layout="@layout/imgbar"/>
     <ImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         app:srcCompat="@drawable/ic_arrow_back_white_24dp"
         android:id="@+id/imageButtonBack"
         android:layout_alignParentTop="true"
@@ -22,14 +22,13 @@
         android:layout_alignEnd="@+id/button_back" />
 
     <Button
-        android:layout_width="40dp"
+        android:layout_width="50dp"
         android:id="@+id/button_back"
         android:background="@android:color/transparent"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_height="30dp" />
-
+        android:layout_height="50dp" />
     <TextView
         android:text="O tema da Semana de Engenharia Mauá é único para cada edição do evento. Ele norteia todo o evento, especialmente os cursos e palestras oferecidos."
         android:layout_width="wrap_content"
