@@ -4,9 +4,14 @@ import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import semanaeng.studio.com.semanadeengenhariamaua.R;
 
@@ -20,7 +25,7 @@ public class detalhes extends AppCompatActivity {
         TextView titulo = (TextView) findViewById(R.id.text_semana);
         TextView textoTop = (TextView) findViewById(R.id.text_top_detalhe);
         TextView textoDet = (TextView) findViewById(R.id.text_detalhe);
-
+        ImageView imagemview = (ImageView) findViewById(R.id.image_detalhes);
         Typeface font = Typeface.createFromAsset(getAssets(), "fonts/agency_fb.ttf");
         titulo.setTypeface( font );
 
@@ -36,8 +41,11 @@ public class detalhes extends AppCompatActivity {
         if(bundle != null){
             String texto = bundle.getString("dadosT");
             String textod = bundle.getString("dadosD");
+            String image = bundle.getString("Imagem");
             textoTop.setText(texto);
             textoDet.setText(textod);
+            Glide.with(getApplicationContext()).load(image).into(imagemview);
+            Log.d("teste",image);
         }
 
 

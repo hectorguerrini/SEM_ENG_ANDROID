@@ -19,6 +19,10 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import semanaeng.studio.com.semanadeengenhariamaua.funcoes.GET;
@@ -32,8 +36,19 @@ public class noturno extends AppCompatActivity {
     private ArrayList<String> itemsTD = new ArrayList<>();
     private ArrayList<String> itemsTDD = new ArrayList<>();
     private ArrayList<String> itemsTE = new ArrayList<>();
+    private ArrayList<String> itemsIm = new ArrayList<>();
     private ProgressBar mProgress;
     private ListView lista;
+    String[] teste = {" http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            "http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            "http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg"
+            ," http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg"
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +89,7 @@ public class noturno extends AppCompatActivity {
                 itemsTD = j.jsonDetalhesT();
                 itemsTDD = j.jsonDetalhesD();
                 itemsTE = j.jsonEmpresaList();
+                itemsIm = j.jsonImage();
             }
             else {
                 itemsList = null;
@@ -87,7 +103,7 @@ public class noturno extends AppCompatActivity {
             lista = (ListView) findViewById(R.id.listaNoturno);
             TextView nc = (TextView) findViewById(R.id.text_noconn);
             if (itemsList != null){
-                MyAdapter adapter = new MyAdapter(noturno.this,itemsTE,itemsList);
+                MyAdapter adapter = new MyAdapter(noturno.this,itemsTE,itemsList,itemsIm);
                 lista.setAdapter(adapter);
                 lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -95,6 +111,7 @@ public class noturno extends AppCompatActivity {
                         Intent intent = new Intent(noturno.this,detalhes.class);
                         intent.putExtra("dadosT",itemsTD.get(position));
                         intent.putExtra("dadosD",itemsTDD.get(position));
+                        intent.putExtra("Imagem",itemsIm.get(position));
                         startActivity(intent);
 
                     }
@@ -115,32 +132,37 @@ public class noturno extends AppCompatActivity {
 
     public class MyAdapter extends ArrayAdapter {
         Context context;
-        int[] images = {
-                R.drawable.logosemana3,
-                R.drawable.logosemana3
-        };
+
         ArrayList<String> empresa;
         ArrayList<String> curso;
-
-        public MyAdapter(Context c, ArrayList<String> empresa,ArrayList<String> curso)
+        ArrayList<String> imagem;
+        public MyAdapter(Context c, ArrayList<String> empresa,ArrayList<String> curso,ArrayList<String> imagem)
         {
             super(c,R.layout.view,empresa);
             this.context=c;
             this.empresa=empresa;
             this.curso=curso;
+            this.imagem=imagem;
         }
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = inflater.inflate(R.layout.view,parent,false);
-            ImageView Image = (ImageView) row.findViewById(R.id.imagelista);
-            TextView Empresa = (TextView) row.findViewById(R.id.textolista);
-            TextView Curso = (TextView) row.findViewById(R.id.texto2lista);
-            Image.setImageResource(images[0]);
-            Empresa.setText(empresa.get(position));
-            Curso.setText(curso.get(position));
 
-            return row;
+            if (convertView == null) {
+
+                convertView = inflater.inflate(R.layout.view,parent,false);
+
+            }
+
+            myHolder holder = new myHolder(convertView);
+
+
+
+            Glide.with(context).load(teste[position]).into(holder.Image);
+            holder.Empresa.setText(empresa.get(position));
+            holder.Curso.setText(curso.get(position));
+
+            return convertView;
         }
     }
 }

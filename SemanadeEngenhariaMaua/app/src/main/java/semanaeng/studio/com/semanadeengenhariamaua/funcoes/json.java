@@ -24,6 +24,31 @@ public class json {
     public json(String c){
         this.c = c;
     }
+    public  ArrayList<String> jsonImage(){
+        String objetocurso = "";
+
+        ArrayList<String> cursos = new ArrayList<String>();
+        try {
+            JSONArray cursojson = new JSONArray(c);
+
+            JSONObject jsonObject;
+            for (int i = 0; i < cursojson.length(); i++) {
+                jsonObject = new JSONObject(cursojson.getString(i));
+
+                objetocurso += jsonObject.getString("imagem_curso");
+                cursos.add(objetocurso);
+
+                objetocurso = " ";
+            }
+
+
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return cursos;
+    }
     public  ArrayList<String> jsonEmpresaList(){
         String objetocurso = "";
 
@@ -37,7 +62,7 @@ public class json {
 
                 objetocurso += jsonObject.getString("nome_empresa");
                 cursos.add(objetocurso);
-                Log.i("teste", objetocurso);
+
                 objetocurso = " ";
             }
 
@@ -63,7 +88,7 @@ public class json {
                 objetocurso += jsonObject.getString("nome_curso") + " ";
                 objetocurso += "Sala: " + jsonObject.getString("sala_curso");
                 cursos.add(objetocurso);
-                Log.i("teste", objetocurso);
+
                 objetocurso = " ";
             }
 
@@ -91,7 +116,7 @@ public class json {
                 objetocurso += jsonObject.getString("nome_curso") + "\n";
                 objetocurso += "Sala: " + jsonObject.getString("sala_curso");
                 cursos.add(objetocurso);
-                Log.i("teste", objetocurso);
+
                 objetocurso = " ";
             }
 
@@ -116,7 +141,7 @@ public class json {
 
                 objetocurso += jsonObject.getString("descricao_curso");
                 cursos.add(objetocurso);
-                Log.i("teste", objetocurso);
+
                 objetocurso = " ";
             }
 
@@ -141,7 +166,7 @@ public class json {
                 objetocurso += "Nosso Processo Seletivo esta\n";
                 objetocurso += jsonObject.getString("status");
                 cursos.add(objetocurso);
-                Log.i("teste", objetocurso);
+
                 objetocurso = " ";
             }
 
@@ -167,7 +192,7 @@ public class json {
                 objetocurso += jsonObject.getString("data_inicial") + " a ";
                 objetocurso += jsonObject.getString("data_final");
                 cursos.add(objetocurso);
-                Log.i("teste", objetocurso);
+
                 objetocurso = " ";
             }
 
@@ -192,7 +217,7 @@ public class json {
 
                 objetocurso += jsonObject.getString("tema");
                 cursos.add(objetocurso);
-                Log.i("teste", objetocurso);
+
                 objetocurso = " ";
             }
 
@@ -218,7 +243,7 @@ public class json {
 
                 objetocurso += jsonObject.getString("nome_empresa");
                 cursos.add(objetocurso);
-                Log.i("teste", objetocurso);
+
                 objetocurso = " ";
             }
 
@@ -244,7 +269,7 @@ public class json {
                 objetocurso += jsonObject.getString("nome_palestra") + " ";
                 objetocurso += "Sala: " + jsonObject.getString("sala_palestra");
                 cursos.add(objetocurso);
-                Log.i("teste", objetocurso);
+
                 objetocurso = " ";
             }
 
@@ -272,7 +297,7 @@ public class json {
                 objetocurso += jsonObject.getString("nome_palestra") + "\n";
                 objetocurso += "Sala: " + jsonObject.getString("sala_palestra");
                 cursos.add(objetocurso);
-                Log.i("teste", objetocurso);
+
                 objetocurso = " ";
             }
 
@@ -297,7 +322,7 @@ public class json {
 
                 objetocurso += jsonObject.getString("descricao_palestra");
                 cursos.add(objetocurso);
-                Log.i("teste", objetocurso);
+
                 objetocurso = " ";
             }
 
@@ -331,7 +356,7 @@ public class json {
 
                 patrociandor.add(p);
 
-                Log.i("testeJsonx",g.toJson(patrociandor));
+
 
             }
 

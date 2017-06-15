@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 
 import android.graphics.Typeface;
+import android.media.Image;
 import android.os.AsyncTask;
 
 import android.support.v7.app.AppCompatActivity;
@@ -16,16 +17,23 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.gson.Gson;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 import semanaeng.studio.com.semanadeengenhariamaua.funcoes.GET;
 import semanaeng.studio.com.semanadeengenhariamaua.R;
 import semanaeng.studio.com.semanadeengenhariamaua.funcoes.json;
+
+import static com.bumptech.glide.load.engine.DiskCacheStrategy.RESULT;
 
 public class diurno extends AppCompatActivity{
 
@@ -34,8 +42,25 @@ public class diurno extends AppCompatActivity{
     private ArrayList<String> itemsTD = new ArrayList<>();
     private ArrayList<String> itemsTDD = new ArrayList<>();
     private ArrayList<String> itemsTE = new ArrayList<>();
+    private ArrayList<String> itemsIm = new ArrayList<>();
     private ProgressBar mProgress;
     private ListView lista;
+    String[] teste = {
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            " http://semanamaua.com.br/LOGOS%202015/LOGO%20FOLDER%20E%20CARTAZ/CEUN.jpg",
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +107,7 @@ public class diurno extends AppCompatActivity{
                 itemsTD = j.jsonDetalhesT();
                 itemsTDD = j.jsonDetalhesD();
                 itemsTE = j.jsonEmpresaList();
+                itemsIm = j.jsonImage();
             }
             else {
                 itemsList = null;
@@ -95,7 +121,7 @@ public class diurno extends AppCompatActivity{
             lista = (ListView) findViewById(R.id.listaDiurno);
             TextView nc = (TextView) findViewById(R.id.text_noconn);
             if (itemsList != null){
-                MyAdapter adapter = new MyAdapter(diurno.this,itemsTE,itemsList);
+                MyAdapter adapter = new MyAdapter(diurno.this,itemsTE,itemsList,itemsIm);
                 lista.setAdapter(adapter);
                 lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -103,6 +129,7 @@ public class diurno extends AppCompatActivity{
                         Intent intent = new Intent(diurno.this,detalhes.class);
                         intent.putExtra("dadosT",itemsTD.get(position));
                         intent.putExtra("dadosD",itemsTDD.get(position));
+                        intent.putExtra("Imagem",teste[position]);
                         startActivity(intent);
 
                     }
@@ -123,34 +150,54 @@ public class diurno extends AppCompatActivity{
 
     public class MyAdapter extends ArrayAdapter {
         Context context;
-        int[] images = {
-                R.drawable.logosemana3,
-                R.drawable.logosemana3
-        };
+
         ArrayList<String> empresa;
         ArrayList<String> curso;
+        ArrayList<String> Imagem;
 
-        public MyAdapter(Context c, ArrayList<String> empresa,ArrayList<String> curso)
+
+        public MyAdapter(Context c, ArrayList<String> empresa, ArrayList<String> curso, ArrayList<String> imagem)
         {
             super(c,R.layout.view,empresa);
             this.context=c;
             this.empresa=empresa;
             this.curso=curso;
+            this.Imagem=imagem;
         }
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = inflater.inflate(R.layout.view,parent,false);
-            ImageView Image = (ImageView) row.findViewById(R.id.imagelista);
-            TextView Empresa = (TextView) row.findViewById(R.id.textolista);
-            TextView Curso = (TextView) row.findViewById(R.id.texto2lista);
-            Image.setImageResource(images[0]);
-            Empresa.setText(empresa.get(position));
-            Curso.setText(curso.get(position));
 
-            return row;
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+            if (convertView == null) {
+
+                convertView = inflater.inflate(R.layout.view,parent,false);
+
+            }
+
+            myHolder holder = new myHolder(convertView);
+            convertView.setTag(holder);
+
+            Picasso.with(context).load(teste[position]).resize(100,100).into(holder.Image, new Callback() {
+                @Override
+                public void onSuccess() {
+                    Log.d("testeS",teste[position]);
+                }
+
+                @Override
+                public void onError() {
+                    Log.d("testeError",teste[position]);
+                }
+            });
+            //Glide.with(context).load(teste[position]).into(holder.Image);
+            holder.Empresa.setText(empresa.get(position));
+            holder.Curso.setText(curso.get(position));
+
+            return convertView;
         }
+
     }
+
 
 
 

@@ -80,41 +80,37 @@ public class patrocinadores extends AppCompatActivity {
 
                     if(p.get(i).getTier() == 1)
                     {
-                        if(tier == 0) {
+                        if(tier < 1) {
                             classeA.add("Classe A");
-                            tier++;
+                            tier = 1;
                         }
                         ob=p.get(i).getNome();
                         classeA.add(ob);
-                    }
-                    if(p.get(i).getTier() == 2){
-                        if(tier == 1) {
+                    }else if(p.get(i).getTier() == 2){
+                        if(tier < 2) {
                             classeA.add("Classe B");
-                            tier++;
+                            tier = 2;
                         }
                         ob=p.get(i).getNome();
                         classeA.add(ob);
-                    }
-                    if(p.get(i).getTier() == 3){
-                        if(tier == 2) {
+                    }else if(p.get(i).getTier() == 3){
+                        if(tier < 3) {
                             classeA.add("Classe C");
-                            tier++;
+                            tier = 3;
                         }
                         ob=p.get(i).getNome();
                         classeA.add(ob);
-                    }
-                    if(p.get(i).getTier() == 4){
-                        if(tier == 3) {
+                    }else if(p.get(i).getTier() == 4){
+                        if(tier < 4) {
                             classeA.add("Classe D");
-                            tier++;
+                            tier = 4;
                         }
                         ob=p.get(i).getNome();
                         classeA.add(ob);
-                    }
-                    if(p.get(i).getTier() == 5){
-                        if(tier == 4) {
+                    }else if(p.get(i).getTier() == 5){
+                        if(tier < 5) {
                             classeA.add("Classe E");
-                            tier++;
+                            tier = 5;
                         }
                         ob=p.get(i).getNome();
                         classeA.add(ob);
