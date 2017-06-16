@@ -20,7 +20,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-         }
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -35,18 +35,20 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile files('mysql-connector-java-5.1.41-bin.jar')
+    compile files('gson-2.8.0.jar')
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:support-v4:25.3.1'
-    testCompile 'junit:junit:4.12'
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.android.support:design:25.3.1'
-    compile files('mysql-connector-java-5.1.41-bin.jar')
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
-    compile files('gson-2.8.0.jar')
     compile 'com.github.chrisbanes:PhotoView:1.2.6'
     compile 'com.google.android.gms:play-services-vision:10.2.6'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.github.bumptech.glide:glide:3.5.2'
+    compile 'com.android.support.constraint:constraint-layout:+'
+    testCompile 'junit:junit:4.12'
 }
+
 
 

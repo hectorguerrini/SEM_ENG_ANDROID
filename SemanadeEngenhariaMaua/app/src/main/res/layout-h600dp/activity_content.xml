@@ -41,18 +41,27 @@
         android:theme="@style/Botao"
         />
     <Button
-        android:text="Cronograma"
+        android:text="Visita"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/button_size_view"
-        android:id="@+id/button_cronograma"
+        android:layout_height="@dimen/button_size_view_big"
+        android:id="@+id/button_visita"
         android:layout_marginTop="@dimen/Margin_top_button"
         android:layout_below="@+id/button_palestra"
         android:theme="@style/Botao"
         />
     <Button
+        android:text="Cronograma"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_size_view_big"
+        android:id="@+id/button_cronograma"
+        android:layout_marginTop="@dimen/Margin_top_button"
+        android:layout_below="@+id/button_visita"
+        android:theme="@style/Botao"
+        />
+    <Button
         android:text="Patrocinadores"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/button_size_view"
+        android:layout_height="@dimen/button_size_view_big"
         android:id="@+id/button_patro"
         android:layout_marginTop="@dimen/Margin_top_button"
         android:layout_below="@+id/button_cronograma"

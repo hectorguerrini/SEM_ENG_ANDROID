@@ -11,7 +11,11 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import semanaeng.studio.com.semanadeengenhariamaua.modelo.mCurso;
+import semanaeng.studio.com.semanadeengenhariamaua.modelo.mPalestra;
+import semanaeng.studio.com.semanadeengenhariamaua.modelo.mVisita;
 import semanaeng.studio.com.semanadeengenhariamaua.modelo.patrocinador;
+import semanaeng.studio.com.semanadeengenhariamaua.modelo.rank;
 
 /**
  * Created by hecto on 20/04/2017.
@@ -24,134 +28,115 @@ public class json {
     public json(String c){
         this.c = c;
     }
-    public  ArrayList<String> jsonImage(){
-        String objetocurso = "";
-
-        ArrayList<String> cursos = new ArrayList<String>();
+    public ArrayList<mCurso> jsonCurso(){
+        ArrayList<mCurso> cursos = new ArrayList<>();
         try {
-            JSONArray cursojson = new JSONArray(c);
-
+            JSONArray cursor = new JSONArray(c);
             JSONObject jsonObject;
-            for (int i = 0; i < cursojson.length(); i++) {
-                jsonObject = new JSONObject(cursojson.getString(i));
 
-                objetocurso += jsonObject.getString("imagem_curso");
-                cursos.add(objetocurso);
+            for (int i = 0; i< cursor.length();i++){
+                jsonObject = new JSONObject(cursor.getString(i));
+                mCurso c = new mCurso();
 
-                objetocurso = " ";
+                c.setId(jsonObject.getInt("id_curso"));
+                c.setCodigo(jsonObject.getString("codigo_curso"));
+                c.setEmpresa(jsonObject.getString("nome_empresa"));
+                c.setNome(jsonObject.getString("nome_curso"));
+                c.setSala(jsonObject.getString("sala_curso"));
+                c.setPeriodo(jsonObject.getString("periodo_curso"));
+                c.setDescricao(jsonObject.getString("descricao_curso"));
+                c.setImagem(jsonObject.getString("imagem_curso"));
+
+                cursos.add(c);
             }
-
-
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         return cursos;
     }
-    public  ArrayList<String> jsonEmpresaList(){
-        String objetocurso = "";
+    public ArrayList<rank> jsonRank(){
+        Gson g = new Gson();
 
-        ArrayList<String> cursos = new ArrayList<String>();
+        ArrayList<rank> ranking = new ArrayList<>();
+
         try {
-            JSONArray cursojson = new JSONArray(c);
+            JSONArray cursor = new JSONArray(c);
 
             JSONObject jsonObject;
-            for (int i = 0; i < cursojson.length(); i++) {
-                jsonObject = new JSONObject(cursojson.getString(i));
 
-                objetocurso += jsonObject.getString("nome_empresa");
-                cursos.add(objetocurso);
 
-                objetocurso = " ";
+            for (int i = 0; i < cursor.length(); i++) {
+                jsonObject = new JSONObject(cursor.getString(i));
+                rank r = new rank();
+                r.setPosicao(i+1);
+                r.setNome(jsonObject.getString("nome_participante"));
+                r.setPontos(jsonObject.getInt("pontos_participante"));
+
+                ranking.add(r);
+
             }
 
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Erro ao listar todos os clientes: " + e);
         }
-
-        return cursos;
+        Log.i("testeJsonx",g.toJson(ranking));
+        return ranking;
     }
-    public  ArrayList<String> jsonList(){
-        String objetocurso = "";
-
-        ArrayList<String> cursos = new ArrayList<String>();
+    public ArrayList<mPalestra> jsonPalestra(){
+        Gson g = new Gson();
+        ArrayList<mPalestra> palestra = new ArrayList<>();
         try {
             JSONArray cursojson = new JSONArray(c);
 
             JSONObject jsonObject;
             for (int i = 0; i < cursojson.length(); i++) {
                 jsonObject = new JSONObject(cursojson.getString(i));
-
-                objetocurso += jsonObject.getString("nome_curso") + " ";
-                objetocurso += "Sala: " + jsonObject.getString("sala_curso");
-                cursos.add(objetocurso);
-
-                objetocurso = " ";
+                mPalestra p = new mPalestra();
+                p.setId(jsonObject.getInt("id_palestra"));
+                p.setCodigo(jsonObject.getString("codigo_palestra"));
+                p.setEmpresa(jsonObject.getString("nome_empresa"));
+                p.setNome(jsonObject.getString("nome_palestra"));
+                p.setSala(jsonObject.getString("sala_palestra"));
+                p.setData(jsonObject.getString("dia_palestra"));
+                p.setHora(jsonObject.getString("hora_palestra"));
+                p.setDescricao(jsonObject.getString("descricao_palestra"));
+                p.setImagem(jsonObject.getString("imagem_palestra"));
+                palestra.add(p);
             }
-
-
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        return cursos;
+        Log.i("testeJsonx",g.toJson(palestra));
+        return palestra;
     }
-    public  ArrayList<String> jsonDetalhesT(){
-        String objetocurso = "";
-
-        ArrayList<String> cursos = new ArrayList<String>();
+    public ArrayList<mVisita> jsonVisita(){
+        Gson g = new Gson();
+        ArrayList<mVisita> visita = new ArrayList<>();
         try {
             JSONArray cursojson = new JSONArray(c);
 
             JSONObject jsonObject;
             for (int i = 0; i < cursojson.length(); i++) {
                 jsonObject = new JSONObject(cursojson.getString(i));
-
-                objetocurso += jsonObject.getString("codigo_curso") + " - ";
-                objetocurso += jsonObject.getString("nome_empresa") + ": ";
-                objetocurso += jsonObject.getString("nome_curso") + "\n";
-                objetocurso += "Sala: " + jsonObject.getString("sala_curso");
-                cursos.add(objetocurso);
-
-                objetocurso = " ";
+                mVisita p = new mVisita();
+                p.setId(jsonObject.getInt("id_visita"));
+                p.setCodigo(jsonObject.getString("codigo_visita"));
+                p.setEmpresa(jsonObject.getString("nome_empresa"));
+                p.setLocal(jsonObject.getString("local_visita"));
+                p.setData(jsonObject.getString("data_visita"));
+                p.setHoraInicio(jsonObject.getString("hora_inicio_visita"));
+                p.setHoraFim(jsonObject.getString("hora_fim_visita"));
+                p.setImagem(jsonObject.getString("imagem_visita"));
+                visita.add(p);
             }
-
-
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        return cursos;
-    }
-    public  ArrayList<String> jsonDetalhesD(){
-        String objetocurso = "";
-
-        ArrayList<String> cursos = new ArrayList<String>();
-        try {
-            JSONArray cursojson = new JSONArray(c);
-
-            JSONObject jsonObject;
-            for (int i = 0; i < cursojson.length(); i++) {
-                jsonObject = new JSONObject(cursojson.getString(i));
-
-                objetocurso += jsonObject.getString("descricao_curso");
-                cursos.add(objetocurso);
-
-                objetocurso = " ";
-            }
-
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return cursos;
+        Log.i("testeJsonx",g.toJson(visita));
+        return visita;
     }
     public  ArrayList<String> jsonRecrutamentoStatus(){
         String objetocurso = "";
@@ -163,7 +148,7 @@ public class json {
             JSONObject jsonObject;
             for (int i = 0; i < cursojson.length(); i++) {
                 jsonObject = new JSONObject(cursojson.getString(i));
-                objetocurso += "Nosso Processo Seletivo esta\n";
+                objetocurso += "Nosso Processo Seletivo está\n";
                 objetocurso += jsonObject.getString("status");
                 cursos.add(objetocurso);
 
@@ -230,110 +215,7 @@ public class json {
         return cursos;
     }
 
-    public  ArrayList<String> jsonEmpresaPalestraList(){
-        String objetocurso = "";
 
-        ArrayList<String> cursos = new ArrayList<String>();
-        try {
-            JSONArray cursojson = new JSONArray(c);
-
-            JSONObject jsonObject;
-            for (int i = 0; i < cursojson.length(); i++) {
-                jsonObject = new JSONObject(cursojson.getString(i));
-
-                objetocurso += jsonObject.getString("nome_empresa");
-                cursos.add(objetocurso);
-
-                objetocurso = " ";
-            }
-
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return cursos;
-    }
-    public  ArrayList<String> jsonListPalestra(){
-        String objetocurso = "";
-
-        ArrayList<String> cursos = new ArrayList<String>();
-        try {
-            JSONArray cursojson = new JSONArray(c);
-
-            JSONObject jsonObject;
-            for (int i = 0; i < cursojson.length(); i++) {
-                jsonObject = new JSONObject(cursojson.getString(i));
-
-                objetocurso += jsonObject.getString("nome_palestra") + " ";
-                objetocurso += "Sala: " + jsonObject.getString("sala_palestra");
-                cursos.add(objetocurso);
-
-                objetocurso = " ";
-            }
-
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return cursos;
-    }
-    public  ArrayList<String> jsonDetalhesPalestraT(){
-        String objetocurso = "";
-
-        ArrayList<String> cursos = new ArrayList<String>();
-        try {
-            JSONArray cursojson = new JSONArray(c);
-
-            JSONObject jsonObject;
-            for (int i = 0; i < cursojson.length(); i++) {
-                jsonObject = new JSONObject(cursojson.getString(i));
-
-                objetocurso += jsonObject.getString("codigo_palestra") + " - ";
-                objetocurso += jsonObject.getString("nome_empresa") + ": ";
-                objetocurso += jsonObject.getString("nome_palestra") + "\n";
-                objetocurso += "Sala: " + jsonObject.getString("sala_palestra");
-                cursos.add(objetocurso);
-
-                objetocurso = " ";
-            }
-
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return cursos;
-    }
-    public  ArrayList<String> jsonDetalhesPalestraD(){
-        String objetocurso = "";
-
-        ArrayList<String> cursos = new ArrayList<String>();
-        try {
-            JSONArray cursojson = new JSONArray(c);
-
-            JSONObject jsonObject;
-            for (int i = 0; i < cursojson.length(); i++) {
-                jsonObject = new JSONObject(cursojson.getString(i));
-
-                objetocurso += jsonObject.getString("descricao_palestra");
-                cursos.add(objetocurso);
-
-                objetocurso = " ";
-            }
-
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        return cursos;
-    }
 
     public ArrayList<patrocinador> listarPatrocinadores(){
         Gson g = new Gson();

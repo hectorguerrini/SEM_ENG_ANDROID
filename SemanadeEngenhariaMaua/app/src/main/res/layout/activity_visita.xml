@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_ranking"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_diurno"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="semanaeng.studio.com.semanadeengenhariamaua.sidebar.ranking">
+    tools:context="semanaeng.studio.com.semanadeengenhariamaua.activity.diurno">
     <include
         android:id="@+id/toolbarPrincipal"
         layout="@layout/toolbar"
         />
+
     <include
         android:id="@+id/imgbar"
         layout="@layout/imgbar"
         />
+
+
 
     <ImageView
         android:layout_width="30dp"
@@ -32,37 +35,36 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_height="50dp" />
-
-    <Button
-        android:text="Adcionar Pontos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbarPrincipal"
-        android:layout_alignLeft="@+id/imageButtonBack"
-        android:layout_alignStart="@+id/imageButtonBack"
-        android:layout_marginTop="13dp"
-        android:background="@drawable/button_style"
-        android:textColor="@android:color/white"
-        android:id="@+id/button_adcionarP" />
-
-    <TextView
-        android:id="@+id/testeCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
-        android:layout_marginStart="32dp"
-        android:text="TextView"
-        android:layout_alignBaseline="@+id/button_adcionarP"
-        android:layout_alignBottom="@+id/button_adcionarP"
-        android:layout_toRightOf="@+id/button_adcionarP"
-        android:layout_toEndOf="@+id/button_adcionarP" />
-
     <ListView
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/button_adcionarP"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp"
-        android:id="@+id/listaRanking"/>
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/toolbarPrincipal"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/listaVisita"
+        />
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:layout_below="@+id/toolbarPrincipal"
+        android:layout_centerHorizontal="true"
+        android:progress="0"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/progressBar"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/text_noconn"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:layout_below="@id/toolbarPrincipal"
+        android:textColor="@android:color/darker_gray" />
+
 </RelativeLayout>

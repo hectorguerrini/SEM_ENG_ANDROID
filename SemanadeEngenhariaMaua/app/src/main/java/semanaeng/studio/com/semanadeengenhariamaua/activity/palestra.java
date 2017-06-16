@@ -19,22 +19,46 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import semanaeng.studio.com.semanadeengenhariamaua.R;
 import semanaeng.studio.com.semanadeengenhariamaua.funcoes.GET;
 import semanaeng.studio.com.semanadeengenhariamaua.funcoes.json;
+import semanaeng.studio.com.semanadeengenhariamaua.modelo.mPalestra;
 
 public class palestra extends AppCompatActivity {
 
     private Button back;
-    private ArrayList<String> itemsList = new ArrayList<>();
-    private ArrayList<String> itemsTD = new ArrayList<>();
-    private ArrayList<String> itemsTDD = new ArrayList<>();
-    private ArrayList<String> itemsTE = new ArrayList<>();
+    private ArrayList<mPalestra> Palestras = new ArrayList<>();
     private ProgressBar mProgress;
     private ListView lista;
-
+    public static String[] teste = {
+            "https://i.imgur.com/iXYn2Ni.jpg",
+            "https://i.imgur.com/ZTGMkz3.jpg",
+            "https://i.imgur.com/ZTGMkz3.jpg",
+            "https://i.imgur.com/ZTGMkz3.jpg",
+            "https://i.imgur.com/ZThjkmu.png",
+            "https://i.imgur.com/QfqkWst.png",
+            "https://i.imgur.com/Y0p1iQd.png",
+            "https://i.imgur.com/2OhxOpW.png",
+            "https://i.imgur.com/nywBWgq.png",
+            "https://i.imgur.com/NmxZlAY.png",
+            "https://i.imgur.com/LoVDW7a.png",
+            "https://i.imgur.com/5wmvV2i.png",
+            "https://i.imgur.com/7vrRYoc.jpg",
+            "https://i.imgur.com/Wi5Qgy7.jpg",
+            "https://i.imgur.com/2OhxOpW.png",
+            "https://i.imgur.com/nywBWgq.png",
+            "https://i.imgur.com/NmxZlAY.png",
+            "https://i.imgur.com/LoVDW7a.png",
+            "https://i.imgur.com/5wmvV2i.png",
+            "https://i.imgur.com/7vrRYoc.jpg",
+            "https://i.imgur.com/Wi5Qgy7.jpg",
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,13 +94,10 @@ public class palestra extends AppCompatActivity {
             String c = GET.GET(params[0]);
             json j = new json(c);
             if (c != null) {
-                itemsList = j.jsonListPalestra();
-                itemsTD = j.jsonDetalhesPalestraT();
-                itemsTDD = j.jsonDetalhesPalestraD();
-                itemsTE = j.jsonEmpresaPalestraList();
+                Palestras = j.jsonPalestra();
             }
             else {
-                itemsList = null;
+                Palestras = null;
             }
             return null;
         }
@@ -86,15 +107,19 @@ public class palestra extends AppCompatActivity {
             mProgress.setVisibility(View.VISIBLE);
             lista = (ListView) findViewById(R.id.listaPalestra);
             TextView nc = (TextView) findViewById(R.id.text_noconn);
-            if (itemsList != null){
-                MyAdapter adapter = new MyAdapter(palestra.this,itemsTE,itemsList);
+            if (Palestras != null){
+                MyAdapter adapter = new MyAdapter(palestra.this,Palestras);
                 lista.setAdapter(adapter);
                 lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String top = Palestras.get(position).getCodigo()+" - " + Palestras.get(position).getEmpresa()+": "+
+                                Palestras.get(position).getNome()+"\nAuditório: "+Palestras.get(position).getSala()+
+                                "\nData: "+Palestras.get(position).getData()+" Hora: "+Palestras.get(position).getHora();
                         Intent intent = new Intent(palestra.this,detalhes.class);
-                        intent.putExtra("dadosT",itemsTD.get(position));
-                        intent.putExtra("dadosD",itemsTDD.get(position));
+                        intent.putExtra("dadosT",top);
+                        intent.putExtra("dadosD",Palestras.get(position).getDescricao());
+                        intent.putExtra("Imagem",Palestras.get(position).getImagem());
                         startActivity(intent);
 
                     }
@@ -115,32 +140,47 @@ public class palestra extends AppCompatActivity {
 
     public class MyAdapter extends ArrayAdapter {
         Context context;
-        int[] images = {
-                R.drawable.logosemana3,
-                R.drawable.logosemana3
-        };
-        ArrayList<String> empresa;
-        ArrayList<String> curso;
 
-        public MyAdapter(Context c, ArrayList<String> empresa,ArrayList<String> curso)
+
+        ArrayList<mPalestra> palestra;
+
+
+        public MyAdapter(Context c, ArrayList<mPalestra> palestra)
         {
-            super(c,R.layout.view,empresa);
+            super(c,R.layout.view,palestra);
             this.context=c;
-            this.empresa=empresa;
-            this.curso=curso;
+            this.palestra=palestra;
         }
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = inflater.inflate(R.layout.view,parent,false);
-            ImageView Image = (ImageView) row.findViewById(R.id.imagelista);
-            TextView Empresa = (TextView) row.findViewById(R.id.textolista);
-            TextView Curso = (TextView) row.findViewById(R.id.texto2lista);
-            Image.setImageResource(images[0]);
-            Empresa.setText(empresa.get(position));
-            Curso.setText(curso.get(position));
 
-            return row;
+            if (convertView == null) {
+
+                convertView = inflater.inflate(R.layout.view,parent,false);
+
+            }
+
+            myHolder holder = new myHolder(convertView);
+            convertView.setTag(holder);
+
+            Picasso.with(context).load(palestra.get(position).getImagem()).into(holder.Image, new Callback() {
+                @Override
+                public void onSuccess() {
+                    Log.d("testeS",palestra.get(position).getImagem());
+                }
+
+                @Override
+                public void onError() {
+                    Log.d("testeError",palestra.get(position).getImagem());
+                }
+            });
+
+            //Glide.with(context).load(image.get(position)).into(holder.Image);
+            holder.Empresa.setText(palestra.get(position).getEmpresa());
+            holder.Curso.setText(palestra.get(position).getNome()+"\nSala: "+palestra.get(position).getSala());
+
+            return convertView;
         }
     }
 

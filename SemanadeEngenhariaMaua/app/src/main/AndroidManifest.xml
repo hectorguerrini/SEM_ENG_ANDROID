@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
-
     <application
         android:name=".funcoes.AppController"
         android:allowBackup="true"
@@ -19,6 +18,7 @@
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode" />
+
         <activity android:name=".activity.login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,7 +40,8 @@
         <activity android:name=".sidebar.contato" />
         <activity android:name=".sidebar.ranking" />
         <activity android:name=".activity.cadastro" />
-        <activity android:name=".qrcode"></activity>
+        <activity android:name=".qrcode" />
+        <activity android:name=".activity.visita"></activity>
     </application>
 
 </manifest>

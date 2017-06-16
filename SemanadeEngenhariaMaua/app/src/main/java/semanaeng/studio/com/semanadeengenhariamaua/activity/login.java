@@ -1,17 +1,12 @@
 package semanaeng.studio.com.semanadeengenhariamaua.activity;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -30,7 +25,6 @@ import java.util.Map;
 import semanaeng.studio.com.semanadeengenhariamaua.R;
 import semanaeng.studio.com.semanadeengenhariamaua.funcoes.AppController;
 import semanaeng.studio.com.semanadeengenhariamaua.funcoes.SessionManager;
-import semanaeng.studio.com.semanadeengenhariamaua.modelo.usuario;
 
 public class login extends AppCompatActivity {
 
@@ -41,9 +35,10 @@ public class login extends AppCompatActivity {
     private Button back;
     private Button cad;
     private Button btLogin;
-    private usuario UsuarioLog = new usuario();
-    private String email;
+
+    public String email;
     private String password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +64,7 @@ public class login extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,7 +126,7 @@ public class login extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Conectado!!", Toast.LENGTH_LONG).show();
                         // Create login session
 
-                        session.setLogin(true);
+                        session.setLogin(true,email);
 
                         // Launch main activity
                         Intent intent = new Intent(login.this,

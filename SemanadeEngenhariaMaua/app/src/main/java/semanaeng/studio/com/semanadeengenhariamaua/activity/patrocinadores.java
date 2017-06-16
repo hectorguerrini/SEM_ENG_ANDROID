@@ -20,7 +20,10 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -81,38 +84,38 @@ public class patrocinadores extends AppCompatActivity {
                     if(p.get(i).getTier() == 1)
                     {
                         if(tier < 1) {
-                            classeA.add("Classe A");
+                            //classeA.add("Classe A");
                             tier = 1;
                         }
-                        ob=p.get(i).getNome();
+                        ob=p.get(i).getImagem();
                         classeA.add(ob);
                     }else if(p.get(i).getTier() == 2){
                         if(tier < 2) {
-                            classeA.add("Classe B");
+                           // classeA.add("Classe B");
                             tier = 2;
                         }
-                        ob=p.get(i).getNome();
+                        ob=p.get(i).getImagem();
                         classeA.add(ob);
                     }else if(p.get(i).getTier() == 3){
                         if(tier < 3) {
-                            classeA.add("Classe C");
+                            //classeA.add("Classe C");
                             tier = 3;
                         }
-                        ob=p.get(i).getNome();
+                        ob=p.get(i).getImagem();
                         classeA.add(ob);
                     }else if(p.get(i).getTier() == 4){
                         if(tier < 4) {
-                            classeA.add("Classe D");
+                            //classeA.add("Classe D");
                             tier = 4;
                         }
-                        ob=p.get(i).getNome();
+                        ob=p.get(i).getImagem();
                         classeA.add(ob);
                     }else if(p.get(i).getTier() == 5){
                         if(tier < 5) {
-                            classeA.add("Classe E");
+                           // classeA.add("Classe E");
                             tier = 5;
                         }
-                        ob=p.get(i).getNome();
+                        ob=p.get(i).getImagem();
                         classeA.add(ob);
                     }
                     ob=null;
@@ -147,7 +150,6 @@ public class patrocinadores extends AppCompatActivity {
 
         ArrayList<String> A;
 
-
         public MyAdapter(Context c,ArrayList<String> A)
         {
             super(c,R.layout.view,A);
@@ -159,11 +161,30 @@ public class patrocinadores extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View row = inflater.inflate(R.layout.view_patrocinadores,parent,false);
-            TextView nome = (TextView) row.findViewById(R.id.texto_lista_patrocinadores);
-            nome.setText(A.get(position));
 
-            return row;
+            if (convertView == null) {
+
+                convertView = inflater.inflate(R.layout.view_patrocinadores,parent,false);
+
+            }
+
+            holderPatrocinadores holder = new holderPatrocinadores(convertView);
+            convertView.setTag(holder);
+
+            Picasso.with(context).load(A.get(position)).into(holder.Image, new Callback() {
+                @Override
+                public void onSuccess() {
+                    Log.d("testeS",A.get(position));
+                }
+
+                @Override
+                public void onError() {
+                    Log.d("testeError",A.get(position));
+                }
+            });
+
+            //Glide.with(context).load(teste[position]).into(holder.Image);
+            return convertView;
         }
     }
 }

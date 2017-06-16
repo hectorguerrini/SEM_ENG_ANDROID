@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Button palestra;
     private Button cronograma;
     private Button patrocinadores;
+    private Button visita;
     private Button logout;
     private DrawerLayout nDrawer;
     private ActionBarDrawerToggle nActionBarDrawerToggle;
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         diurno = (Button) findViewById(R.id.button_di);
         noturno = (Button) findViewById(R.id.button_no);
         palestra = (Button) findViewById(R.id.button_palestra);
+        visita = (Button) findViewById(R.id.button_visita);
         cronograma = (Button) findViewById(R.id.button_cronograma);
         patrocinadores = (Button) findViewById(R.id.button_patro);
 
@@ -64,12 +66,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         diurno.setTypeface( font2 );
         noturno.setTypeface( font2 );
         palestra.setTypeface( font2 );
+        visita.setTypeface(font2);
         cronograma.setTypeface( font2 );
         patrocinadores.setTypeface( font2 );
 
         session = new SessionManager(getApplicationContext());
         if (!session.isLoggedIn()) {
-            session.setLogin(false);
+            session.setLogin(false,null);
             startActivity(new Intent(MainActivity.this, semanaeng.studio.com.semanadeengenhariamaua.activity.login.class));
             finish();
         }
@@ -98,7 +101,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(new Intent(MainActivity.this, semanaeng.studio.com.semanadeengenhariamaua.activity.palestra.class));
             }
         });
-
+        visita.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, semanaeng.studio.com.semanadeengenhariamaua.activity.visita.class));
+            }
+        });
         cronograma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                session.setLogin(false);
+                session.setLogin(false,null);
                 startActivity(new Intent(MainActivity.this, semanaeng.studio.com.semanadeengenhariamaua.activity.login.class));
                 finish();
             }

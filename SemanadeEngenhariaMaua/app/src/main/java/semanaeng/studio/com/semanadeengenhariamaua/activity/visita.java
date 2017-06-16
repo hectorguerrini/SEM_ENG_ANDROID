@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 
 import android.graphics.Typeface;
-import android.media.Image;
 import android.os.AsyncTask;
 
 import android.support.v7.app.AppCompatActivity;
@@ -22,8 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.gson.Gson;
+
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -32,38 +30,21 @@ import java.util.ArrayList;
 import semanaeng.studio.com.semanadeengenhariamaua.funcoes.GET;
 import semanaeng.studio.com.semanadeengenhariamaua.R;
 import semanaeng.studio.com.semanadeengenhariamaua.funcoes.json;
-import semanaeng.studio.com.semanadeengenhariamaua.modelo.mCurso;
 
-import static com.bumptech.glide.load.engine.DiskCacheStrategy.RESULT;
+import semanaeng.studio.com.semanadeengenhariamaua.modelo.mVisita;
 
-public class diurno extends AppCompatActivity{
+
+public class visita extends AppCompatActivity{
 
     private Button back;
-    private ArrayList<mCurso> Cursos = new ArrayList<>();
+    private ArrayList<mVisita> visita = new ArrayList<>();
     private ProgressBar mProgress;
     private ListView lista;
-    public static String[] teste = {
-            "https://i.imgur.com/iXYn2Ni.jpg",
-            "https://i.imgur.com/ZTGMkz3.jpg",
-            "https://i.imgur.com/ZTGMkz3.jpg",
-            "https://i.imgur.com/ZTGMkz3.jpg",
-            "https://i.imgur.com/ZThjkmu.png",
-            "https://i.imgur.com/QfqkWst.png",
-            "https://i.imgur.com/Y0p1iQd.png",
-            "https://i.imgur.com/2OhxOpW.png",
-            "https://i.imgur.com/nywBWgq.png",
-            "https://i.imgur.com/NmxZlAY.png",
-            "https://i.imgur.com/LoVDW7a.png",
-            "https://i.imgur.com/5wmvV2i.png",
-            "https://i.imgur.com/7vrRYoc.jpg",
-            "https://i.imgur.com/Wi5Qgy7.jpg",
-            };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diurno);
+        setContentView(R.layout.activity_visita);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         mProgress = (ProgressBar) findViewById(R.id.progressBar);
@@ -84,15 +65,11 @@ public class diurno extends AppCompatActivity{
         });
 
 
-
-        new acessoRest().execute("https://ancient-bastion-16380.herokuapp.com/api.php?table=curso&&periodo=diurno");
-
-
-
+        new listarVisitas().execute("https://ancient-bastion-16380.herokuapp.com/api.php?table=visita");
 
     }
 
-    public class acessoRest extends AsyncTask<String, Void, String> {
+    public class listarVisitas extends AsyncTask<String, Void, String> {
 
 
         @Override
@@ -101,10 +78,10 @@ public class diurno extends AppCompatActivity{
             String c = GET.GET(params[0]);
             json j = new json(c);
             if (c != null) {
-                Cursos = j.jsonCurso();
+                visita = j.jsonVisita();
             }
             else {
-                Cursos = null;
+                visita = null;
             }
             return null;
         }
@@ -112,25 +89,11 @@ public class diurno extends AppCompatActivity{
         @Override
         protected void onPostExecute(String s) {
             mProgress.setVisibility(View.VISIBLE);
-            lista = (ListView) findViewById(R.id.listaDiurno);
+            lista = (ListView) findViewById(R.id.listaVisita);
             TextView nc = (TextView) findViewById(R.id.text_noconn);
-            if (Cursos != null){
-                MyAdapter adapter = new MyAdapter(diurno.this,Cursos);
+            if (visita != null){
+                MyAdapter adapter = new MyAdapter(visita.this,visita);
                 lista.setAdapter(adapter);
-                lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        String top = Cursos.get(position).getCodigo()+" - " + Cursos.get(position).getEmpresa()+": "+
-                                Cursos.get(position).getNome()+"\nSala: "+Cursos.get(position).getSala();
-
-                        Intent intent = new Intent(diurno.this,detalhes.class);
-                        intent.putExtra("dadosT",top);
-                        intent.putExtra("dadosD",Cursos.get(position).getDescricao());
-                        intent.putExtra("Imagem",Cursos.get(position).getImagem());
-                        startActivity(intent);
-
-                    }
-                });
 
             }else{
                 Log.i("teste", "sem conect");
@@ -148,15 +111,15 @@ public class diurno extends AppCompatActivity{
     public class MyAdapter extends ArrayAdapter {
         Context context;
 
-        ArrayList<mCurso> curso;
+        ArrayList<mVisita> visita;
 
 
 
-        public MyAdapter(Context c, ArrayList<mCurso> curso)
+        public MyAdapter(Context c, ArrayList<mVisita> visita)
         {
-            super(c,R.layout.view,curso);
+            super(c,R.layout.view,visita);
             this.context=c;
-            this.curso=curso;
+            this.visita=visita;
         }
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
@@ -172,21 +135,23 @@ public class diurno extends AppCompatActivity{
             myHolder holder = new myHolder(convertView);
             convertView.setTag(holder);
 
-            Picasso.with(context).load(curso.get(position).getImagem()).into(holder.Image, new Callback() {
+            Picasso.with(context).load(visita.get(position).getImagem()).into(holder.Image, new Callback() {
                 @Override
                 public void onSuccess() {
-                    Log.d("testeS",curso.get(position).getImagem());
+                    Log.d("testeS",visita.get(position).getImagem());
                 }
 
                 @Override
                 public void onError() {
-                    Log.d("testeError",curso.get(position).getImagem());
+                    Log.d("testeError",visita.get(position).getImagem());
                 }
             });
 
             //Glide.with(context).load(itemsIm.get(position)).into(holder.Image);
-            holder.Empresa.setText(curso.get(position).getEmpresa());
-            holder.Curso.setText(curso.get(position).getNome()+"\nSala: "+curso.get(position).getSala());
+            holder.Empresa.setText(visita.get(position).getCodigo()+" - "+visita.get(position).getEmpresa());
+            String top = "Local: "+visita.get(position).getLocal()+"\nData: "+visita.get(position).getData()+" Horario: "+
+                    visita.get(position).getHoraInicio()+" às "+visita.get(position).getHoraFim();
+            holder.Curso.setText(top);
 
             return convertView;
         }
