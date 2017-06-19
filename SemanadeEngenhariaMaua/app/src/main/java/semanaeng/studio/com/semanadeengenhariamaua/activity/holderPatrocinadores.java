@@ -2,7 +2,7 @@ package semanaeng.studio.com.semanadeengenhariamaua.activity;
 
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
+
 
 import semanaeng.studio.com.semanadeengenhariamaua.R;
 

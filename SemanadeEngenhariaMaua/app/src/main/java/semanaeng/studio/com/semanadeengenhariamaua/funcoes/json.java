@@ -24,7 +24,7 @@ import semanaeng.studio.com.semanadeengenhariamaua.modelo.rank;
 public class json {
 
     public String c ;
-
+    public rank meuRank;
     public json(String c){
         this.c = c;
     }
@@ -55,7 +55,7 @@ public class json {
         }
         return cursos;
     }
-    public ArrayList<rank> jsonRank(){
+    public ArrayList<rank> jsonRank(final String email){
         Gson g = new Gson();
 
         ArrayList<rank> ranking = new ArrayList<>();
@@ -69,6 +69,12 @@ public class json {
             for (int i = 0; i < cursor.length(); i++) {
                 jsonObject = new JSONObject(cursor.getString(i));
                 rank r = new rank();
+                if(jsonObject.getString("email_participante").equals(email)){
+                    meuRank = new rank();
+                    meuRank.setPosicao(i+1);
+                    meuRank.setNome(jsonObject.getString("nome_participante"));
+                    meuRank.setPontos(jsonObject.getInt("pontos_participante"));
+                }
                 r.setPosicao(i+1);
                 r.setNome(jsonObject.getString("nome_participante"));
                 r.setPontos(jsonObject.getInt("pontos_participante"));

@@ -20,7 +20,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
+
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -37,17 +37,6 @@ public class noturno extends AppCompatActivity {
     private ArrayList<mCurso> Cursos = new ArrayList<>();
     private ProgressBar mProgress;
     private ListView lista;
-    public static String[] teste = {
-            "https://i.imgur.com/QfqkWst.png",
-            "https://i.imgur.com/Y0p1iQd.png",
-            "https://i.imgur.com/2OhxOpW.png",
-            "https://i.imgur.com/nywBWgq.png",
-            "https://i.imgur.com/NmxZlAY.png",
-            "https://i.imgur.com/LoVDW7a.png",
-            "https://i.imgur.com/5wmvV2i.png",
-            "https://i.imgur.com/7vrRYoc.jpg",
-            "https://i.imgur.com/Wi5Qgy7.jpg",
-    };
 
 
     @Override
@@ -153,19 +142,21 @@ public class noturno extends AppCompatActivity {
 
             myHolder holder = new myHolder(convertView);
             convertView.setTag(holder);
+            if (!curso.get(position).getImagem().equals("null")) {
+                Picasso.with(context).load(curso.get(position).getImagem()).into(holder.Image, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        Log.d("testeS", curso.get(position).getImagem());
+                    }
 
-            Picasso.with(context).load(curso.get(position).getImagem()).into(holder.Image, new Callback() {
-                @Override
-                public void onSuccess() {
-                    Log.d("testeS",curso.get(position).getImagem());
-                }
-
-                @Override
-                public void onError() {
-                    Log.d("testeError",curso.get(position).getImagem());
-                }
-            });
-
+                    @Override
+                    public void onError() {
+                        Log.d("testeError", curso.get(position).getImagem());
+                    }
+                });
+            }else{
+                Picasso.with(context).load(R.drawable.logosemana3).into(holder.Image);
+            }
             //Glide.with(context).load(itemsIm.get(position)).into(holder.Image);
             holder.Empresa.setText(curso.get(position).getEmpresa());
             holder.Curso.setText(curso.get(position).getNome()+"\nSala: "+curso.get(position).getSala());

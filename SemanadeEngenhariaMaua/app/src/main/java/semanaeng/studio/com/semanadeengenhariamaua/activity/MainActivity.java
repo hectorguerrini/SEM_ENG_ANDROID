@@ -24,7 +24,7 @@ import semanaeng.studio.com.semanadeengenhariamaua.sidebar.recrutamento;
 import semanaeng.studio.com.semanadeengenhariamaua.sidebar.sobre;
 import semanaeng.studio.com.semanadeengenhariamaua.sidebar.tema;
 
-@SuppressWarnings("ALL")
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private Button diurno;
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         nActionBarDrawerToggle = new ActionBarDrawerToggle(this, nDrawer,toolbar, R.string.open,R.string.close);
 
-        nDrawer.setDrawerListener(nActionBarDrawerToggle);
+        nDrawer.addDrawerListener(nActionBarDrawerToggle);
         nActionBarDrawerToggle.syncState();
 
 

@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 
 import android.graphics.Typeface;
-import android.media.Image;
+
 import android.os.AsyncTask;
 
 import android.support.v7.app.AppCompatActivity;
@@ -22,8 +22,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.gson.Gson;
+
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -34,7 +33,7 @@ import semanaeng.studio.com.semanadeengenhariamaua.R;
 import semanaeng.studio.com.semanadeengenhariamaua.funcoes.json;
 import semanaeng.studio.com.semanadeengenhariamaua.modelo.mCurso;
 
-import static com.bumptech.glide.load.engine.DiskCacheStrategy.RESULT;
+
 
 public class diurno extends AppCompatActivity{
 
@@ -42,23 +41,6 @@ public class diurno extends AppCompatActivity{
     private ArrayList<mCurso> Cursos = new ArrayList<>();
     private ProgressBar mProgress;
     private ListView lista;
-    public static String[] teste = {
-            "https://i.imgur.com/iXYn2Ni.jpg",
-            "https://i.imgur.com/ZTGMkz3.jpg",
-            "https://i.imgur.com/ZTGMkz3.jpg",
-            "https://i.imgur.com/ZTGMkz3.jpg",
-            "https://i.imgur.com/ZThjkmu.png",
-            "https://i.imgur.com/QfqkWst.png",
-            "https://i.imgur.com/Y0p1iQd.png",
-            "https://i.imgur.com/2OhxOpW.png",
-            "https://i.imgur.com/nywBWgq.png",
-            "https://i.imgur.com/NmxZlAY.png",
-            "https://i.imgur.com/LoVDW7a.png",
-            "https://i.imgur.com/5wmvV2i.png",
-            "https://i.imgur.com/7vrRYoc.jpg",
-            "https://i.imgur.com/Wi5Qgy7.jpg",
-            };
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,17 +154,21 @@ public class diurno extends AppCompatActivity{
             myHolder holder = new myHolder(convertView);
             convertView.setTag(holder);
 
-            Picasso.with(context).load(curso.get(position).getImagem()).into(holder.Image, new Callback() {
-                @Override
-                public void onSuccess() {
-                    Log.d("testeS",curso.get(position).getImagem());
-                }
+            if (!curso.get(position).getImagem().equals("null")) {
+                Picasso.with(context).load(curso.get(position).getImagem()).into(holder.Image, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        Log.d("testeS", curso.get(position).getImagem());
+                    }
 
-                @Override
-                public void onError() {
-                    Log.d("testeError",curso.get(position).getImagem());
-                }
-            });
+                    @Override
+                    public void onError() {
+                        Log.d("testeError", curso.get(position).getImagem());
+                    }
+                });
+            }else{
+                Picasso.with(context).load(R.drawable.logosemana3).into(holder.Image);
+            }
 
             //Glide.with(context).load(itemsIm.get(position)).into(holder.Image);
             holder.Empresa.setText(curso.get(position).getEmpresa());

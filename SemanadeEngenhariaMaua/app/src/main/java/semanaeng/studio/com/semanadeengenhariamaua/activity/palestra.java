@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageView;
+
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -36,29 +36,7 @@ public class palestra extends AppCompatActivity {
     private ArrayList<mPalestra> Palestras = new ArrayList<>();
     private ProgressBar mProgress;
     private ListView lista;
-    public static String[] teste = {
-            "https://i.imgur.com/iXYn2Ni.jpg",
-            "https://i.imgur.com/ZTGMkz3.jpg",
-            "https://i.imgur.com/ZTGMkz3.jpg",
-            "https://i.imgur.com/ZTGMkz3.jpg",
-            "https://i.imgur.com/ZThjkmu.png",
-            "https://i.imgur.com/QfqkWst.png",
-            "https://i.imgur.com/Y0p1iQd.png",
-            "https://i.imgur.com/2OhxOpW.png",
-            "https://i.imgur.com/nywBWgq.png",
-            "https://i.imgur.com/NmxZlAY.png",
-            "https://i.imgur.com/LoVDW7a.png",
-            "https://i.imgur.com/5wmvV2i.png",
-            "https://i.imgur.com/7vrRYoc.jpg",
-            "https://i.imgur.com/Wi5Qgy7.jpg",
-            "https://i.imgur.com/2OhxOpW.png",
-            "https://i.imgur.com/nywBWgq.png",
-            "https://i.imgur.com/NmxZlAY.png",
-            "https://i.imgur.com/LoVDW7a.png",
-            "https://i.imgur.com/5wmvV2i.png",
-            "https://i.imgur.com/7vrRYoc.jpg",
-            "https://i.imgur.com/Wi5Qgy7.jpg",
-    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

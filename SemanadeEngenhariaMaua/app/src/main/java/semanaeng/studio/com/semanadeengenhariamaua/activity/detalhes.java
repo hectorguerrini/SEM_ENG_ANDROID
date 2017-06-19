@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.squareup.picasso.Picasso;
+
 
 import semanaeng.studio.com.semanadeengenhariamaua.R;
 
@@ -42,9 +42,14 @@ public class detalhes extends AppCompatActivity {
             String texto = bundle.getString("dadosT");
             String textod = bundle.getString("dadosD");
             String image = bundle.getString("Imagem");
+            if(!image.equals("null")){
+                Glide.with(getApplicationContext()).load(image).into(imagemview);
+            }else{
+                Glide.with(getApplicationContext()).load(R.drawable.logosemana3).into(imagemview);
+            }
             textoTop.setText(texto);
             textoDet.setText(textod);
-            Glide.with(getApplicationContext()).load(image).into(imagemview);
+
             Log.d("teste",image);
         }
 
