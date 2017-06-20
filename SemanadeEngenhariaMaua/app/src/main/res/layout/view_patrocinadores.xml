@@ -4,10 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
-        android:layout_width="150sp"
-        android:layout_height="150sp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_width="80sp"
+        android:layout_height="80sp"
         android:id="@+id/image_patrocinadores"
         />
+    <TextView
+        android:id="@+id/text_nome_patrocinadores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_toRightOf="@+id/image_patrocinadores"
+        android:layout_toEndOf="@+id/image_patrocinadores" />
 </RelativeLayout>

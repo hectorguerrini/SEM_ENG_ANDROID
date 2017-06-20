@@ -33,6 +33,7 @@ import semanaeng.studio.com.semanadeengenhariamaua.funcoes.SessionManager;
 
 public class cadastro extends AppCompatActivity {
     private Button cadastrar;
+    private Button back;
     private ProgressDialog pDialog;
     private SessionManager session;
     private EditText nomeEdit;
@@ -53,7 +54,7 @@ public class cadastro extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro);
 
         cadastrar = (Button) findViewById(R.id.button_cadastro);
-
+        back = (Button) findViewById(R.id.button_back);
         nomeEdit = (EditText) findViewById(R.id.editText_nome);
         emailEdit = (EditText) findViewById(R.id.editText_email);
         passEdit = (EditText) findViewById(R.id.editText_pw);
@@ -118,6 +119,13 @@ public class cadastro extends AppCompatActivity {
                 }
             }
         });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
 
     }
     private void registerUser(final String nome, final String email,

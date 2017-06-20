@@ -78,50 +78,8 @@ public class patrocinadores extends AppCompatActivity {
             if (c != null) {
                 p = j.listarPatrocinadores();
 
-                for (int i = 0; i < p.size(); i++){
-                    Log.i("testeDoi",p.get(i).getNome());
-
-                    if(p.get(i).getTier() == 1)
-                    {
-                        if(tier < 1) {
-                            //classeA.add("Classe A");
-                            tier = 1;
-                        }
-                        ob=p.get(i).getImagem();
-                        classeA.add(ob);
-                    }else if(p.get(i).getTier() == 2){
-                        if(tier < 2) {
-                           // classeA.add("Classe B");
-                            tier = 2;
-                        }
-                        ob=p.get(i).getImagem();
-                        classeA.add(ob);
-                    }else if(p.get(i).getTier() == 3){
-                        if(tier < 3) {
-                            //classeA.add("Classe C");
-                            tier = 3;
-                        }
-                        ob=p.get(i).getImagem();
-                        classeA.add(ob);
-                    }else if(p.get(i).getTier() == 4){
-                        if(tier < 4) {
-                            //classeA.add("Classe D");
-                            tier = 4;
-                        }
-                        ob=p.get(i).getImagem();
-                        classeA.add(ob);
-                    }else if(p.get(i).getTier() == 5){
-                        if(tier < 5) {
-                           // classeA.add("Classe E");
-                            tier = 5;
-                        }
-                        ob=p.get(i).getImagem();
-                        classeA.add(ob);
-                    }
-                    ob=null;
-                    Log.i("teste",g.toJson(classeA));
-
-                }
+            }else{
+                p=null;
             }
 
             return null;
@@ -132,8 +90,8 @@ public class patrocinadores extends AppCompatActivity {
             mProgress.setVisibility(View.VISIBLE);
             lista = (ListView) findViewById(R.id.listaPatrocinadores);
             TextView nc = (TextView) findViewById(R.id.text_noconn);
-            if (classeA!= null){
-                MyAdapter adapter = new MyAdapter(patrocinadores.this,classeA);
+            if (p!= null){
+                MyAdapter adapter = new MyAdapter(patrocinadores.this,p);
                 lista.setAdapter(adapter);
             }else{
                 Log.i("teste", "sem conect");
@@ -147,15 +105,14 @@ public class patrocinadores extends AppCompatActivity {
 
     public class MyAdapter extends ArrayAdapter {
         Context context;
+        int tier=0;
+        ArrayList<patrocinador> p;
 
-        ArrayList<String> A;
-
-        public MyAdapter(Context c,ArrayList<String> A)
+        public MyAdapter(Context c,ArrayList<patrocinador> p)
         {
-            super(c,R.layout.view,A);
+            super(c,R.layout.view,p);
             this.context=c;
-
-            this.A=A;
+            this.p=p;
 
         }
         @Override
@@ -170,8 +127,29 @@ public class patrocinadores extends AppCompatActivity {
 
             holderPatrocinadores holder = new holderPatrocinadores(convertView);
             convertView.setTag(holder);
+            if(p.get(position).getTier() == 1)
+            {
+                Glide.with(context).load(p.get(position).getImagem()).into(holder.Image);
+                holder.Nome.setText(p.get(position).getNome());
+            }else if(p.get(position).getTier() == 2){
 
-            Picasso.with(context).load(A.get(position)).into(holder.Image, new Callback() {
+                Glide.with(context).load(p.get(position).getImagem()).into(holder.Image);
+                holder.Nome.setText(p.get(position).getNome());
+            }else if(p.get(position).getTier() == 3){
+
+                Glide.with(context).load(p.get(position).getImagem()).into(holder.Image);
+                holder.Nome.setText(p.get(position).getNome());
+            }else if(p.get(position).getTier() == 4){
+
+                Glide.with(context).load(p.get(position).getImagem()).into(holder.Image);
+                holder.Nome.setText(p.get(position).getNome());
+            }else if(p.get(position).getTier() == 5){
+
+                Glide.with(context).load(p.get(position).getImagem()).into(holder.Image);
+                holder.Nome.setText(p.get(position).getNome());
+            }
+
+            /*Picasso.with(context).load(p.get(position).getImagem()).into(holder.Image, new Callback() {
                 @Override
                 public void onSuccess() {
                     Log.d("testeS",A.get(position));
@@ -181,9 +159,9 @@ public class patrocinadores extends AppCompatActivity {
                 public void onError() {
                     Log.d("testeError",A.get(position));
                 }
-            });
+            });*/
 
-            //Glide.with(context).load(teste[position]).into(holder.Image);
+
             return convertView;
         }
     }

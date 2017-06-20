@@ -32,7 +32,7 @@ public class login extends AppCompatActivity {
     private EditText inputPassword;
     private ProgressDialog pDialog;
     private SessionManager session;
-    private Button back;
+
     private Button cad;
     private Button btLogin;
 
@@ -48,7 +48,7 @@ public class login extends AppCompatActivity {
         inputEmail = (EditText) findViewById(R.id.editText_login_email);
         inputPassword = (EditText) findViewById(R.id.editText_login_password);
         cad = (Button) findViewById(R.id.button_ir_cadastro);
-        back = (Button) findViewById(R.id.button_back);
+
         btLogin = (Button) findViewById(R.id.button_login);
 
 
@@ -84,13 +84,6 @@ public class login extends AppCompatActivity {
             }
         });
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-
-            }
-        });
         cad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

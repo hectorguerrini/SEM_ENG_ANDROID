@@ -68,25 +68,6 @@
 
         />
 
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        app:srcCompat="@drawable/ic_arrow_back_white_24dp"
-        android:id="@+id/imageButtonBack"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/button_back"
-        android:layout_alignEnd="@+id/button_back" />
-
-    <Button
-        android:layout_width="50dp"
-        android:id="@+id/button_back"
-        android:background="@android:color/transparent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_height="50dp"
-        />
-
     <Button
         android:text="Cadastre-se no Aplicativo"
         android:textSize="10sp"
