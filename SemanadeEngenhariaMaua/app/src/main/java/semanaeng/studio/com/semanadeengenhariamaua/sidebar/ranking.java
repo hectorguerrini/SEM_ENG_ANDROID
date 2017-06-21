@@ -111,15 +111,22 @@ public class ranking extends AppCompatActivity {
         if(requestCode == REQUEST_CODE && resultCode == RESULT_OK){
             if(data != null){
 
-
-
                 String barcode = data.getExtras().getString("barcode");
                  try {
                      JSONObject jsonObject = new JSONObject(barcode);
-                     String teste = jsonObject.getString("curso") + " pontos: "+ jsonObject.getString("pontos_participante");
-                     Log.d("rank",teste);
-                     test.setText(teste);
-                     adcionarPontos(email,jsonObject.getString("pontos_participante"),jsonObject.getString("curso"));
+                     String teste1 = jsonObject.getString("tabela") +" "+ jsonObject.getString("id");
+                     Log.d("teste",teste1);
+                     if(jsonObject.getString("tabela").equals("curso")){
+                         String teste = jsonObject.getString("id") + " pontos: "+ jsonObject.getString("pontos_participante");
+                         Log.d("rank",teste);
+                         test.setText(teste);
+                         adcionarPontos(email,jsonObject.getString("pontos_participante"),jsonObject.getString("id"),jsonObject.getString("tabela"));
+                     }else if(jsonObject.getString("tabela").equals("palestra")){
+                         String teste = jsonObject.getString("id") + " pontos: "+ jsonObject.getString("pontos_participante");
+                         Log.d("rank",teste);
+                         test.setText(teste);
+                         adcionarPontos(email,jsonObject.getString("pontos_participante"),jsonObject.getString("id"),jsonObject.getString("tabela"));
+                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -205,7 +212,7 @@ public class ranking extends AppCompatActivity {
         }
     }
 
-    private void adcionarPontos(final String email, final String pontos,final String curso) {
+    private void adcionarPontos(final String email, final String pontos,final String id,final String tabela) {
         // Tag used to cancel the request
         String tag_string_req = "req_login";
 
@@ -259,7 +266,8 @@ public class ranking extends AppCompatActivity {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("email", email);
                 params.put("pontos", pontos);
-                params.put("curso",curso);
+                params.put("id",id);
+                params.put("tabela",tabela);
 
                 return params;
             }

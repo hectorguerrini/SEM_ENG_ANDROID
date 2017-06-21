@@ -19,9 +19,9 @@ import java.io.InputStreamReader;
 public class GET {
 
     public static String GET(String url){
-        InputStream inputStream = null;
+        InputStream inputStream ;
         String result = "";
-        String line = "";
+        String line ;
         try {
             // create HttpClient
             HttpClient httpclient = new DefaultHttpClient();
@@ -33,7 +33,7 @@ public class GET {
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             while ((line = reader.readLine()) != null){
                 result = result + line;
-                Log.i("teste", result);
+
             }
 
             inputStream.close();
