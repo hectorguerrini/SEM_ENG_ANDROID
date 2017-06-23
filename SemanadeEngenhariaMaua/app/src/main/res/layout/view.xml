@@ -29,6 +29,7 @@
         android:textSize="16sp"
         android:textColor="@android:color/black"
         android:textAlignment="center"
+        android:paddingLeft="5sp"
         android:layout_below="@+id/textolista"
         android:layout_toRightOf="@+id/imagelista"
         />

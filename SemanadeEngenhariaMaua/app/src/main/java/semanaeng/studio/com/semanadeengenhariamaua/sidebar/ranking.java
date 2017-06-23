@@ -117,15 +117,15 @@ public class ranking extends AppCompatActivity {
                      String teste1 = jsonObject.getString("tabela") +" "+ jsonObject.getString("id");
                      Log.d("teste",teste1);
                      if(jsonObject.getString("tabela").equals("curso")){
-                         String teste = jsonObject.getString("id") + " pontos: "+ jsonObject.getString("pontos_participante");
+                         String teste = jsonObject.getString("id") + " pontos: "+ jsonObject.getString("pontos");
                          Log.d("rank",teste);
                          test.setText(teste);
-                         adcionarPontos(email,jsonObject.getString("pontos_participante"),jsonObject.getString("id"),jsonObject.getString("tabela"));
+                         adcionarPontos(email,jsonObject.getString("pontos"),jsonObject.getString("id"),jsonObject.getString("tabela"));
                      }else if(jsonObject.getString("tabela").equals("palestra")){
-                         String teste = jsonObject.getString("id") + " pontos: "+ jsonObject.getString("pontos_participante");
+                         String teste = jsonObject.getString("id") + " pontos: "+ jsonObject.getString("pontose");
                          Log.d("rank",teste);
                          test.setText(teste);
-                         adcionarPontos(email,jsonObject.getString("pontos_participante"),jsonObject.getString("id"),jsonObject.getString("tabela"));
+                         adcionarPontos(email,jsonObject.getString("pontos"),jsonObject.getString("id"),jsonObject.getString("tabela"));
                      }
                 } catch (JSONException e) {
                     e.printStackTrace();
