@@ -50,41 +50,42 @@
         android:text="Endereço: Praça Mauá, 01 Instituto Mauá de Tecnologia - Sala H210 - Mauá, São Caetano do Sul - SP, 09580-900"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="23dp"
         android:id="@+id/textView4"
-        android:textSize="16sp"
+        android:textSize="12sp"
+        android:paddingLeft="8dp"
         android:fontFamily="sans-serif"
-        android:layout_below="@+id/image_contato"
-        android:layout_alignLeft="@+id/image_contato"
-        android:layout_alignStart="@+id/image_contato" />
+        android:layout_below="@+id/text_tel"
+        android:layout_alignLeft="@+id/button_map"
+        android:layout_alignStart="@+id/button_map" />
 
     <Button
         android:id="@+id/button_map"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
+
         android:background="@android:color/transparent"
-        android:layout_height="150dp"
+        android:layout_height="100dp"
         android:layout_alignTop="@+id/image_mapacontato"
         android:layout_centerHorizontal="true" />
 
     <ImageView
         app:srcCompat="@drawable/mapacontato"
         android:id="@+id/image_mapacontato"
-        android:layout_height="150dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_below="@+id/textView4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_phone_black_24dp"
-        android:layout_marginTop="19dp"
         android:id="@+id/image_contato"
         android:layout_below="@+id/toolbarPrincipal"
         android:layout_alignLeft="@+id/imageButtonBack"
-        android:layout_alignStart="@+id/imageButtonBack" />
+        android:layout_alignStart="@+id/imageButtonBack"
+        android:layout_marginTop="16dp" />
 
     <TextView
         android:text="Aplicativo Desenvolvido em Android Por: \nHector Guerrini Herrera\nContato: email - hectorumaga@hotmail.com ; \ntel - (11)96927-8041\nAplicativo Desenvolvido em IOS Por: Willian Chan\nContato: email - willian_chan_@hotmail.com\n tel - (11)98414-5130 "
@@ -96,7 +97,7 @@
         android:textAllCaps="false"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
-        android:textSize="14sp"
+        android:textSize="12sp"
         android:textStyle="normal|bold"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"

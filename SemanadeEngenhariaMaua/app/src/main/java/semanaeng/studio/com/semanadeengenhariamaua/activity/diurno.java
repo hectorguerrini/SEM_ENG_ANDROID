@@ -116,7 +116,7 @@ public class diurno extends AppCompatActivity{
 
             }else{
                 Log.i("teste", "sem conect");
-                nc.setText("Sem Conexao");
+                nc.setText("Erro na Conexão com Servidor");
             }
 
             mProgress.setVisibility(View.GONE);
@@ -158,12 +158,12 @@ public class diurno extends AppCompatActivity{
                 Picasso.with(context).load(curso.get(position).getImagem()).into(holder.Image, new Callback() {
                     @Override
                     public void onSuccess() {
-                        Log.d("testeS", curso.get(position).getImagem());
+
                     }
 
                     @Override
                     public void onError() {
-                        Log.d("testeError", curso.get(position).getImagem());
+                        Picasso.with(context).load(R.drawable.logosemana3).into(holder.Image);
                     }
                 });
             }else{
@@ -172,7 +172,7 @@ public class diurno extends AppCompatActivity{
 
             //Glide.with(context).load(itemsIm.get(position)).into(holder.Image);
             holder.Empresa.setText(curso.get(position).getEmpresa());
-            holder.Curso.setText(curso.get(position).getNome()+"\nSala: "+curso.get(position).getSala());
+            holder.Curso.setText(curso.get(position).getNome());
 
             return convertView;
         }

@@ -2,6 +2,7 @@ package semanaeng.studio.com.semanadeengenhariamaua.sidebar;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -55,7 +56,7 @@ public class ranking extends AppCompatActivity {
     private SharedPreferences sharedPreferences;
     public static final int REQUEST_CODE = 100;
     public static final int PERMISSION_REQUEST = 200;
-    private TextView test;
+
     private TextView myPos;
     private TextView myNome;
     private TextView myPontos;
@@ -67,7 +68,7 @@ public class ranking extends AppCompatActivity {
         setContentView(R.layout.activity_ranking);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         TextView titulo = (TextView) findViewById(R.id.text_semana);
-        test = (TextView) findViewById(R.id.testeCode);
+
         myPos = (TextView) findViewById(R.id.text_my_pos);
         myNome = (TextView) findViewById(R.id.text_my_nome);
         myPontos = (TextView) findViewById(R.id.text_my_pontos);
@@ -114,17 +115,13 @@ public class ranking extends AppCompatActivity {
                 String barcode = data.getExtras().getString("barcode");
                  try {
                      JSONObject jsonObject = new JSONObject(barcode);
-                     String teste1 = jsonObject.getString("tabela") +" "+ jsonObject.getString("id");
-                     Log.d("teste",teste1);
+
                      if(jsonObject.getString("tabela").equals("curso")){
-                         String teste = jsonObject.getString("id") + " pontos: "+ jsonObject.getString("pontos");
-                         Log.d("rank",teste);
-                         test.setText(teste);
+
+
                          adcionarPontos(email,jsonObject.getString("pontos"),jsonObject.getString("id"),jsonObject.getString("tabela"));
                      }else if(jsonObject.getString("tabela").equals("palestra")){
-                         String teste = jsonObject.getString("id") + " pontos: "+ jsonObject.getString("pontose");
-                         Log.d("rank",teste);
-                         test.setText(teste);
+
                          adcionarPontos(email,jsonObject.getString("pontos"),jsonObject.getString("id"),jsonObject.getString("tabela"));
                      }
                 } catch (JSONException e) {
@@ -148,6 +145,7 @@ public class ranking extends AppCompatActivity {
                 meuRank = j.meuRank;
             }else{
                 listaRank =null;
+
             }
             return null;
         }
@@ -165,7 +163,16 @@ public class ranking extends AppCompatActivity {
                 lista.setAdapter(adapter);
             }else{
                 Log.i("teste", "sem conect");
+                pDialog.setMessage("Sem Conexão com Servidor.\nTente novamento mais tarde.");
 
+                pDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        onBackPressed();
+                        hideDialog();
+                    }
+                });
+                showDialog();
             }
 
 

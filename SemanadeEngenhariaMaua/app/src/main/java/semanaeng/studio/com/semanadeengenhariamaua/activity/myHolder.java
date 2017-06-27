@@ -1,5 +1,6 @@
 package semanaeng.studio.com.semanadeengenhariamaua.activity;
 
+
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,9 +12,10 @@ import semanaeng.studio.com.semanadeengenhariamaua.R;
  */
 
 public class myHolder {
-    TextView Curso;
-    TextView Empresa;
-    ImageView Image;
+    public TextView Curso;
+    public TextView Empresa;
+    public ImageView Image;
+
 
     public myHolder(View v) {
         Curso = (TextView) v.findViewById(R.id.texto2lista);

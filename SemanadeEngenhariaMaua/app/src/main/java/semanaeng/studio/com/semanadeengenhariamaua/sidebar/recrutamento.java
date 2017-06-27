@@ -88,9 +88,14 @@ public class recrutamento extends AppCompatActivity {
             progressBar.setVisibility(View.VISIBLE);
             TextView status = (TextView) findViewById(R.id.text_rec1);
             TextView data = (TextView) findViewById(R.id.text_recData);
+            TextView noc = (TextView) findViewById(R.id.text_noconn);
+            if(recStatus != null){
+                status.setText(recStatus.get(0));
+                data.setText(periodo+recData.get(0));
+            }else{
+                noc.setText("Sem Conexão com Servidor");
+            }
 
-            status.setText(recStatus.get(0));
-            data.setText(periodo+recData.get(0));
             progressBar.setVisibility(View.GONE);
         }
     }

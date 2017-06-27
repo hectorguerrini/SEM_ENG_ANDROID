@@ -21,9 +21,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
+
 
 import java.util.ArrayList;
 
@@ -39,8 +37,8 @@ public class patrocinadores extends AppCompatActivity {
     private ProgressBar mProgress;
     private ListView lista;
     private ArrayList<patrocinador> p = new ArrayList<>();
-    private ArrayList<String> classeA= new ArrayList<>();
-    Gson g = new Gson();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,8 +69,7 @@ public class patrocinadores extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            String ob ;
-            int tier = 0;
+
             String c = GET.GET(params[0]);
             json j = new json(c);
             if (c != null) {
@@ -95,7 +92,7 @@ public class patrocinadores extends AppCompatActivity {
                 lista.setAdapter(adapter);
             }else{
                 Log.i("teste", "sem conect");
-                nc.setText("Sem Conexao");
+                nc.setText("Erro na Conexão com Servidor");
             }
 
             mProgress.setVisibility(View.GONE);
@@ -105,7 +102,7 @@ public class patrocinadores extends AppCompatActivity {
 
     public class MyAdapter extends ArrayAdapter {
         Context context;
-        int tier=0;
+
         ArrayList<patrocinador> p;
 
         public MyAdapter(Context c,ArrayList<patrocinador> p)

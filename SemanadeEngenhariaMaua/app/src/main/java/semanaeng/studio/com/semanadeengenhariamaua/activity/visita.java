@@ -2,6 +2,7 @@ package semanaeng.studio.com.semanadeengenhariamaua.activity;
 
 import android.content.Context;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 
 import android.graphics.Typeface;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -94,10 +96,24 @@ public class visita extends AppCompatActivity{
             if (visita != null){
                 MyAdapter adapter = new MyAdapter(visita.this,visita);
                 lista.setAdapter(adapter);
+                lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        String top = visita.get(position).getCodigo()+" - " + visita.get(position).getEmpresa()+
+                                "\nLocal: "+visita.get(position).getLocal()+
+                                "\nData: "+visita.get(position).getData()+" Horario: "+
+                                visita.get(position).getHoraInicio()+" às "+visita.get(position).getHoraFim();
+                        Intent intent = new Intent(visita.this,detalhes.class);
+                        intent.putExtra("dadosT",top);
+                        intent.putExtra("Imagem",visita.get(position).getImagem());
+                        startActivity(intent);
+                    }
+                });
+
 
             }else{
                 Log.i("teste", "sem conect");
-                nc.setText("Sem Conexao");
+                nc.setText("Erro na Conexão com Servidor");
             }
 
             mProgress.setVisibility(View.GONE);

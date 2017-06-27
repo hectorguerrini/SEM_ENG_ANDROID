@@ -106,7 +106,7 @@ public class noturno extends AppCompatActivity {
 
             }else{
                 Log.i("teste", "sem conect");
-                nc.setText("Sem Conexao");
+                nc.setText("Erro na Conexão com Servidor");
             }
 
             mProgress.setVisibility(View.GONE);

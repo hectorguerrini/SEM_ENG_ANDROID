@@ -65,8 +65,12 @@ public class tema extends AppCompatActivity {
         protected void onPostExecute(String s) {
             progressBar.setVisibility(View.VISIBLE);
             TextView temaText = (TextView) findViewById(R.id.text_tema);
+            if(jsonTema != null){
+                temaText.setText(jsonTema.get(0));
+            }else {
+                temaText.setText("Explorando Novos Caminhos");
+            }
 
-            temaText.setText(jsonTema.get(0));
             progressBar.setVisibility(View.GONE);
 
         }

@@ -19,7 +19,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -105,7 +105,7 @@ public class palestra extends AppCompatActivity {
 
             }else{
                 Log.i("teste", "sem conect");
-                nc.setText("Sem Conexao");
+                nc.setText("Erro na Conexão com Servidor");
             }
 
             mProgress.setVisibility(View.GONE);

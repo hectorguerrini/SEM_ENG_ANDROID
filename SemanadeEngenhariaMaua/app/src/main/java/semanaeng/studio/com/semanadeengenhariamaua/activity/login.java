@@ -145,7 +145,7 @@ public class login extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Log.e("resposta", "Login Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
+                        "Sem Conexão", Toast.LENGTH_LONG).show();
                 hideDialog();
             }
         }) {

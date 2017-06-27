@@ -178,7 +178,7 @@ public class cadastro extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Registration Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
+                        "Sem Conexão", Toast.LENGTH_LONG).show();
                 hideDialog();
             }
         }) {
